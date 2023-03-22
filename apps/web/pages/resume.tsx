@@ -1,7 +1,9 @@
-const resume = {
+import { Resume } from "./resume";
+
+const resume: Resume = {
   name: "Philippe Wronski",
   headline: "Tech Lead / Lead Dev",
-  yearsExperience: "12",
+  yearsOfExperience: 12,
   skills: [
     {
       name: "Java",
@@ -83,7 +85,7 @@ const resume = {
       companyName: "BforBank"
     },
   ],
-  formation: [
+  educations: [
     {
       name: "Licence Informatique",
       nameInstitution: "CNAM Belfort",
@@ -117,7 +119,7 @@ const resume = {
       value: 3
     }
   ],
-  workExperience: [
+  workExperiences: [
     {
       companyName: "BforBank",
       headLine: "Lead Tech",
