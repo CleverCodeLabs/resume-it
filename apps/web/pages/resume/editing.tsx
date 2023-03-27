@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Layout from "../../components/layouts/Layout";
-import ResumeEditingLayout from "../../components/layouts/ResueEditingLayout";
+import ResumeEditingLayout from "../../components/layouts/ResumeEditingLayout";
 import { NextPageWithLayout } from "../_app";
 
 const Editing: NextPageWithLayout = () => {
