@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { RiContactsLine, RiProfileLine } from "react-icons/ri";
+import { GrMapLocation } from "react-icons/gr";
 
 const Navbar: FC = () => {
   return (
@@ -9,6 +10,9 @@ const Navbar: FC = () => {
       </a>
       <a>
         <RiProfileLine />
+      </a>
+      <a>
+        <GrMapLocation />
       </a>
     </div>
   );
