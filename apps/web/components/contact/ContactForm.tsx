@@ -13,10 +13,8 @@ import { RiContactsLine } from "react-icons/ri";
 interface ContactFormInput {
   fullName: string;
   phoneNumber: string;
-  address: string;
-  zipCode: string;
-  city: string;
   emailAddress: string;
+  dateOfBirth: number;
 }
 
 export default function ContactForm() {
@@ -29,10 +27,8 @@ export default function ContactForm() {
     defaultValues: {
       fullName: "",
       phoneNumber: "",
-      address: "",
-      zipCode: "",
-      city: "",
       emailAddress: "",
+      dateOfBirth: 1,
     },
   });
 
@@ -122,17 +118,18 @@ export default function ContactForm() {
       />
 
       <Controller
-        name="address"
+        name="dateOfBirth"
         control={control}
         rules={{
           minLength: { value: 4, message: "Minimum length should be 4" },
         }}
         render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
           <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="address">Adresse</FormLabel>
+            <FormLabel htmlFor="dateOfBirth">Date de naissance</FormLabel>
             <Input
-              id="address"
-              placeholder="Votre adresse"
+              id="dateOfBirth"
+              placeholder="Votre date de naissance"
+              type="date"
               {...{ onChange, onBlur, value, ref }}
             />
             <FormErrorMessage>
@@ -141,51 +138,7 @@ export default function ContactForm() {
           </FormControl>
         )}
       />
-
-      <Controller
-        name="zipCode"
-        control={control}
-        rules={{
-          pattern: {
-            value: /[0-9]{5}/,
-            message: "entrez votre code postal",
-          },
-        }}
-        render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="zipCode">CP</FormLabel>
-            <Input
-              id="zipCode"
-              placeholder="Votre Code Postal"
-              {...{ onChange, onBlur, value, ref }}
-            />
-            <FormErrorMessage>
-              {fieldState.error && fieldState.error.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
-
-      <Controller
-        name="city"
-        control={control}
-        rules={{
-          minLength: { value: 4, message: "Minimum length should be 4" },
-        }}
-        render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="city">Ville</FormLabel>
-            <Input
-              id="city"
-              placeholder="Le nom de votre ville"
-              {...{ onChange, onBlur, value, ref }}
-            />
-            <FormErrorMessage>
-              {fieldState.error && fieldState.error.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
+      <p>Photo</p>
 
       <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
         Submit
