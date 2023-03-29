@@ -5,6 +5,7 @@ import { NextPageWithLayout } from "../_app";
 import ContactForm from "../../components/contact/ContactForm";
 import ProfileForm from "../../components/profile/ProfileForm";
 import LocationForm from "../../components/location/LocationForm";
+import LanguagesForm from "../../components/languages/LanguagesForm";
 import HobbiesForm from "../../components/hobbies/HobbiesForm";
 import SkillsForm from "../../components/skills/SkillsForm";
 import NetworksForm from "../../components/networks/NetworksForm";
@@ -15,6 +16,7 @@ const Contact: NextPageWithLayout = () => {
       <ContactForm />
       <ProfileForm />
       <LocationForm />
+      <LanguagesForm />
       <HobbiesForm />
       <SkillsForm />
       <NetworksForm />
