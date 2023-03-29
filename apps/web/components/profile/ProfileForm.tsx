@@ -5,6 +5,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Heading,
   Input,
   NumberDecrementStepper,
   NumberIncrementStepper,
@@ -20,19 +21,19 @@ import {
 import React from "react";
 import { RiProfileLine } from "react-icons/ri";
 
-interface ContactFormInput {
+interface ProfileFormInput {
   headline: string;
   yearsOfXp: number;
   aboutMe: string;
 }
 
-export default function ContactForm() {
+export default function ProfileForm() {
   const {
     control,
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<ContactFormInput>({
+  } = useForm<ProfileFormInput>({
     defaultValues: {
       headline: "",
       yearsOfXp: 1,
@@ -51,10 +52,10 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>
+      <Heading as="h2" size="xl">
         <RiProfileLine />
         Profile
-      </h1>
+      </Heading>
       <Controller
         name="headline"
         control={control}
@@ -125,7 +126,7 @@ export default function ContactForm() {
           <FormControl isInvalid={fieldState.invalid}>
             <FormLabel htmlFor="aboutMe">A propos de moi</FormLabel>
             <Textarea
-              id="aboutMeheadline"
+              id="aboutMe"
               placeholder="Quelques mots sur vous"
               {...{ onChange, onBlur, value, ref }}
             />

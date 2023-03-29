@@ -5,6 +5,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Heading,
   Input,
 } from "@chakra-ui/react";
 import React from "react";
@@ -43,10 +44,10 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>
+      <Heading as="h2" size="xl">
         <RiContactsLine />
         Contact
-      </h1>
+      </Heading>
       <Controller
         name="fullName"
         control={control}

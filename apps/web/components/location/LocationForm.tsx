@@ -5,12 +5,13 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Heading,
   Input,
 } from "@chakra-ui/react";
 import React from "react";
 import { GrMapLocation } from "react-icons/gr";
 
-interface ContactFormInput {
+interface LocationFormInput {
   address: string;
   zipCode: string;
   city: string;
@@ -18,13 +19,13 @@ interface ContactFormInput {
   country: string;
 }
 
-export default function ContactForm() {
+export default function LocationForm() {
   const {
     control,
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<ContactFormInput>({
+  } = useForm<LocationFormInput>({
     defaultValues: {
       address: "",
       zipCode: "",
@@ -45,10 +46,10 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>
+      <Heading as="h2" size="xl">
         <GrMapLocation />
         Location
-      </h1>
+      </Heading>
 
       <Controller
         name="address"
