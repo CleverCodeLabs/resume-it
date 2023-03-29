@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { RiContactsLine, RiProfileLine } from "react-icons/ri";
 import { GrMapLocation } from "react-icons/gr";
+import { IoShareSocialOutline } from "react-icons/io5";
 
 const Navbar: FC = () => {
   return (
@@ -13,6 +14,9 @@ const Navbar: FC = () => {
       </a>
       <a>
         <GrMapLocation />
+      </a>
+      <a>
+        <IoShareSocialOutline />
       </a>
     </div>
   );
