@@ -1,4 +1,10 @@
-import { Controller, useForm } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  useFieldArray,
+  useForm,
+  useWatch,
+} from "react-hook-form";
 
 import {
   Button,
@@ -7,55 +13,39 @@ import {
   FormLabel,
   Heading,
   Input,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
+  Select,
 } from "@chakra-ui/react";
 import React from "react";
 import { MdOutlineLanguage } from "react-icons/md";
 import { IoAddOutline } from "react-icons/io5";
+import { FieldArrayWithId } from "react-hook-form/dist/types/fieldArray";
 
 interface LanguagesFormInput {
-  name: string;
-  level: number;
+  languages:
+    | {
+        name?: string | undefined;
+        level?: string | undefined;
+      }[]
+    | undefined;
 }
 
-export default function LanguagesForm() {
-  const {
+const LanguageInput = ({
+  control,
+  index,
+  field,
+}: {
+  control: Control<LanguagesFormInput>;
+  index: number;
+  field: FieldArrayWithId<LanguagesFormInput, "languages", "id">;
+}) => {
+  const value = useWatch({
+    name: "languages",
     control,
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<LanguagesFormInput>({
-    defaultValues: {
-      name: "",
-      level: 1,
-    },
   });
-
-  function onSubmit(values: any): Promise<void> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        resolve();
-      }, 3000);
-    });
-  }
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Heading as="h2" size="xl">
-        <MdOutlineLanguage />
-        Languages
-      </Heading>
+    <div>
       <Controller
-        name="name"
+        name={`languages.${index}.name`}
         control={control}
         rules={{
           required: "This is required",
@@ -75,49 +65,74 @@ export default function LanguagesForm() {
           </FormControl>
         )}
       />
-
       <Controller
-        name="level"
+        name={`languages.${index}.level`}
         control={control}
         rules={{
           required: "This is required",
         }}
         render={({ field }) => (
-          <FormControl isInvalid={!!errors?.level}>
-            <FormLabel htmlFor="level">Niveau de la Langue</FormLabel>
-            <NumberInput {...field} min={0} max={5} id="level">
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-            <Slider
-              flex="1"
-              min={0}
-              max={5}
-              step={1}
-              focusThumbOnChange={false}
-              {...field}
-            >
-              <SliderTrack>
-                <SliderFilledTrack />
-              </SliderTrack>
-              <SliderThumb fontSize="sm" boxSize="32px">
-                {field.value}
-              </SliderThumb>
-            </Slider>
-            <FormErrorMessage>
-              {errors.level && errors.level.message}
-            </FormErrorMessage>
-          </FormControl>
+          <Select placeholder="Sélectionner votre niveau" {...field}>
+            <option value="debutant">Débutant</option>
+            <option value="intermediaire">Intermédiaire</option>
+            <option value="courant">Courant</option>
+            <option value="bilingue">Bilingue</option>
+            <option value="maternelle">Maternelle</option>
+          </Select>
         )}
       />
+    </div>
+  );
+};
 
-      <Button leftIcon={<IoAddOutline />} colorScheme="teal" variant="outline">
+export default function LanguagesForm() {
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm<LanguagesFormInput>({
+    defaultValues: {
+      languages: [],
+    },
+  });
+
+  const { fields, append } = useFieldArray({
+    name: "languages",
+    control,
+  });
+
+  function onSubmit(values: any): Promise<void> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        alert(JSON.stringify(values, null, 2));
+        resolve();
+      }, 3000);
+    });
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit, (errors, e) => console.log(errors, e))}
+    >
+      <Heading as="h2" size="xl">
+        <MdOutlineLanguage />
+        Languages
+      </Heading>
+      {fields.map((field, index) => (
+        <LanguageInput key={field.id} {...{ control, index, field }} />
+      ))}
+      <Button
+        leftIcon={<IoAddOutline />}
+        colorScheme="teal"
+        variant="outline"
+        type="button"
+        onClick={() =>
+          append({ name: "", level: "" }, { focusName: "languages.0.name" })
+        }
+      >
         Nouvelle Langue
       </Button>
-
       <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
         Submit
       </Button>
