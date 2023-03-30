@@ -45,7 +45,7 @@ export default function ContactForm() {
   }
 
   return (
-    <Box mb="4" pos="relative">
+    <Box mb="4" pos="relative" id="contact">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Heading
           as="h2"

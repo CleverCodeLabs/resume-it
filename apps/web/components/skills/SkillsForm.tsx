@@ -52,7 +52,7 @@ export default function SkillsForm() {
   }
 
   return (
-    <Box mb="4" pos="relative">
+    <Box mb="4" pos="relative" id="skills">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Heading
           as="h2"

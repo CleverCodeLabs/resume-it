@@ -40,7 +40,7 @@ export default function HobbiesForm() {
   }
 
   return (
-    <Box mb="4" pos="relative">
+    <Box mb="4" pos="relative" id="hobbies">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Heading
           as="h2"
