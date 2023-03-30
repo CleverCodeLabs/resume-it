@@ -1,15 +1,18 @@
 import { Controller, useForm } from "react-hook-form";
 
 import {
+  Box,
   Button,
+  Divider,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Heading,
   Input,
+  Text,
 } from "@chakra-ui/react";
 import React from "react";
-import { IoShareSocialOutline } from "react-icons/io5";
+import { IoAddOutline, IoShareSocialOutline } from "react-icons/io5";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
 import { SlSocialGithub } from "react-icons/sl";
 import { CgWebsite } from "react-icons/cg";
@@ -48,133 +51,171 @@ export default function NetworksForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Heading as="h2" size="xl">
-        <IoShareSocialOutline />
-        Réseaux Sociaux
-      </Heading>
-      <Controller
-        name="facebook"
-        control={control}
-        rules={{
-          minLength: { value: 4, message: "Minimum length should be 4" },
-        }}
-        render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="facebook">
-              <TiSocialFacebook />
-              Facebook
-            </FormLabel>
-            <Input
-              id="facebook"
-              placeholder="Votre Lien Facebook"
-              {...{ onChange, onBlur, value, ref }}
-            />
-            <FormErrorMessage>
-              {fieldState.error && fieldState.error.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
+    <Box mb="4" pos="relative">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Heading
+          as="h2"
+          size="lg"
+          top="0"
+          p="4"
+          mx="-4"
+          pos="sticky"
+          bgColor="gray.50"
+          zIndex="sticky"
+          boxShadow="sm"
+          display="flex"
+          alignItems="center"
+        >
+          <IoShareSocialOutline />
+          <Text as="span" ml="3">
+            Réseaux Sociaux
+          </Text>
+        </Heading>
+        <Controller
+          name="facebook"
+          control={control}
+          rules={{
+            minLength: { value: 4, message: "Minimum length should be 4" },
+          }}
+          render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
+            <FormControl isInvalid={fieldState.invalid} mb="4">
+              <FormLabel
+                htmlFor="facebook"
+                mt="4"
+                display="flex"
+                alignItems="center"
+              >
+                <TiSocialFacebook />
+                <Text as="span" ml="1">
+                  Facebook
+                </Text>
+              </FormLabel>
+              <Input
+                id="facebook"
+                placeholder="Votre Lien Facebook"
+                {...{ onChange, onBlur, value, ref }}
+              />
+              <FormErrorMessage>
+                {fieldState.error && fieldState.error.message}
+              </FormErrorMessage>
+            </FormControl>
+          )}
+        />
 
-      <Controller
-        name="linkedIn"
-        control={control}
-        rules={{
-          minLength: { value: 4, message: "Minimum length should be 4" },
-        }}
-        render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="linkedIn">
-              <TiSocialLinkedin />
-              LinkedIn
-            </FormLabel>
-            <Input
-              id="linkedIn"
-              placeholder="Votre Lien LinkedIn"
-              {...{ onChange, onBlur, value, ref }}
-            />
-            <FormErrorMessage>
-              {fieldState.error && fieldState.error.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
+        <Controller
+          name="linkedIn"
+          control={control}
+          rules={{
+            minLength: { value: 4, message: "Minimum length should be 4" },
+          }}
+          render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
+            <FormControl isInvalid={fieldState.invalid} mb="4">
+              <FormLabel htmlFor="linkedIn" display="flex" alignItems="center">
+                <TiSocialLinkedin />
+                <Text as="span" ml="1">
+                  LinkedIn
+                </Text>
+              </FormLabel>
+              <Input
+                id="linkedIn"
+                placeholder="Votre Lien LinkedIn"
+                {...{ onChange, onBlur, value, ref }}
+              />
+              <FormErrorMessage>
+                {fieldState.error && fieldState.error.message}
+              </FormErrorMessage>
+            </FormControl>
+          )}
+        />
 
-      <Controller
-        name="gitHub"
-        control={control}
-        rules={{
-          minLength: { value: 4, message: "Minimum length should be 4" },
-        }}
-        render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="gitHub">
-              <SlSocialGithub />
-              GitHub
-            </FormLabel>
-            <Input
-              id="gitHub"
-              placeholder="Votre Lien GitHub"
-              {...{ onChange, onBlur, value, ref }}
-            />
-            <FormErrorMessage>
-              {fieldState.error && fieldState.error.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
+        <Controller
+          name="gitHub"
+          control={control}
+          rules={{
+            minLength: { value: 4, message: "Minimum length should be 4" },
+          }}
+          render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
+            <FormControl isInvalid={fieldState.invalid} mb="4">
+              <FormLabel htmlFor="gitHub" display="flex" alignItems="center">
+                <SlSocialGithub />
+                <Text as="span" ml="1">
+                  GitHub
+                </Text>
+              </FormLabel>
+              <Input
+                id="gitHub"
+                placeholder="Votre Lien GitHub"
+                {...{ onChange, onBlur, value, ref }}
+              />
+              <FormErrorMessage>
+                {fieldState.error && fieldState.error.message}
+              </FormErrorMessage>
+            </FormControl>
+          )}
+        />
 
-      <Controller
-        name="portfolio"
-        control={control}
-        rules={{
-          minLength: { value: 4, message: "Minimum length should be 4" },
-        }}
-        render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="portfolio">
-              <CgWebsite />
-              Portfolio
-            </FormLabel>
-            <Input
-              id="portfolio"
-              placeholder="Votre Lien de portfolio"
-              {...{ onChange, onBlur, value, ref }}
-            />
-            <FormErrorMessage>
-              {fieldState.error && fieldState.error.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
-      <Controller
-        name="other"
-        control={control}
-        rules={{
-          minLength: { value: 4, message: "Minimum length should be 4" },
-        }}
-        render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="other">
-              <MdWeb />
-              Autre lien
-            </FormLabel>
-            <Input
-              id="other"
-              placeholder="Autre lien"
-              {...{ onChange, onBlur, value, ref }}
-            />
-            <FormErrorMessage>
-              {fieldState.error && fieldState.error.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
-
-      <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
-        Submit
-      </Button>
-    </form>
+        <Controller
+          name="portfolio"
+          control={control}
+          rules={{
+            minLength: { value: 4, message: "Minimum length should be 4" },
+          }}
+          render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
+            <FormControl isInvalid={fieldState.invalid} mb="4">
+              <FormLabel htmlFor="portfolio" display="flex" alignItems="center">
+                <CgWebsite />
+                <Text as="span" ml="1">
+                  Portfolio
+                </Text>
+              </FormLabel>
+              <Input
+                id="portfolio"
+                placeholder="Votre Lien de portfolio"
+                {...{ onChange, onBlur, value, ref }}
+              />
+              <FormErrorMessage>
+                {fieldState.error && fieldState.error.message}
+              </FormErrorMessage>
+            </FormControl>
+          )}
+        />
+        <Controller
+          name="other"
+          control={control}
+          rules={{
+            minLength: { value: 4, message: "Minimum length should be 4" },
+          }}
+          render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
+            <FormControl isInvalid={fieldState.invalid} mb="4">
+              <FormLabel htmlFor="other" display="flex" alignItems="center">
+                <MdWeb />
+                <Text as="span" ml="1">
+                  Autre lien
+                </Text>
+              </FormLabel>
+              <Input
+                id="other"
+                placeholder="Autre lien"
+                {...{ onChange, onBlur, value, ref }}
+              />
+              <FormErrorMessage>
+                {fieldState.error && fieldState.error.message}
+              </FormErrorMessage>
+            </FormControl>
+          )}
+        />
+        <Button
+          leftIcon={<IoAddOutline />}
+          colorScheme="teal"
+          variant="outline"
+          mb="4"
+        >
+          <Text as="span" ml="1">
+            Ajout Réseaux Sociaux
+          </Text>
+        </Button>
+      </form>
+      <Divider orientation="horizontal" borderColor="gray.400" />
+    </Box>
   );
 }

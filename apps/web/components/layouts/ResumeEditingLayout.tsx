@@ -9,12 +9,18 @@ const ResumeEditingLayout: FC<BaseLayoutProps> = ({ children }) => {
     <Grid
       templateAreas={`"nav main preview"`}
       gridTemplateColumns={"60px 1fr 2fr"}
-      h="100%"
     >
       <GridItem pl="2" bg="pink.300" area={"nav"}>
         <Navbar />
       </GridItem>
-      <GridItem pl="2" bg="green.300" area={"main"}>
+      <GridItem
+        pl="2"
+        px="4"
+        bg="gray.50"
+        area={"main"}
+        overflowY="scroll"
+        h="calc(100vh - 60px)"
+      >
         {children}
       </GridItem>
       <GridItem pl="2" bg="blue.300" area={"preview"}>
