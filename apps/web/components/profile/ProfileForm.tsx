@@ -54,7 +54,7 @@ export default function ProfileForm() {
   }
 
   return (
-    <Box mb="4" pos="relative">
+    <Box mb="4" pos="relative" id="profile">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Heading
           as="h2"

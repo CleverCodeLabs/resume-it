@@ -48,8 +48,8 @@ export default function LocationForm() {
   }
 
   return (
-    <Box mb="4" pos="relative">
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <Box mb="4" pos="relative" id="location">
+      <form onSubmit={handleSubmit(onSubmit)} >
         <Heading
           as="h2"
           size="lg"

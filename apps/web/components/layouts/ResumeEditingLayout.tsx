@@ -10,7 +10,7 @@ const ResumeEditingLayout: FC<BaseLayoutProps> = ({ children }) => {
       templateAreas={`"nav main preview"`}
       gridTemplateColumns={"60px 1fr 2fr"}
     >
-      <GridItem pl="2" bg="pink.300" area={"nav"}>
+      <GridItem area={"nav"}>
         <Navbar />
       </GridItem>
       <GridItem

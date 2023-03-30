@@ -51,7 +51,7 @@ export default function NetworksForm() {
   }
 
   return (
-    <Box mb="4" pos="relative">
+    <Box mb="4" pos="relative" id="network">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Heading
           as="h2"
