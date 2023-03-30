@@ -7,13 +7,17 @@ import {
 } from "react-hook-form";
 
 import {
+  Box,
   Button,
+  Divider,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Heading,
+  HStack,
   Input,
   Select,
+  Text,
 } from "@chakra-ui/react";
 import React from "react";
 import { MdOutlineLanguage } from "react-icons/md";
@@ -43,7 +47,7 @@ const LanguageInput = ({
     control,
   });
   return (
-    <div>
+    <HStack>
       <Controller
         name={`languages.${index}.name`}
         control={control}
@@ -52,8 +56,10 @@ const LanguageInput = ({
           minLength: { value: 4, message: "Minimum length should be 4" },
         }}
         render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="name">Nom de la Langue</FormLabel>
+          <FormControl isInvalid={fieldState.invalid} mb="4">
+            <FormLabel htmlFor="name" mt="4">
+              Nom de la Langue
+            </FormLabel>
             <Input
               id="name"
               placeholder="Votre nom de langue"
@@ -65,23 +71,30 @@ const LanguageInput = ({
           </FormControl>
         )}
       />
+
       <Controller
         name={`languages.${index}.level`}
         control={control}
         rules={{
           required: "This is required",
         }}
-        render={({ field }) => (
-          <Select placeholder="Sélectionner votre niveau" {...field}>
-            <option value="debutant">Débutant</option>
-            <option value="intermediaire">Intermédiaire</option>
-            <option value="courant">Courant</option>
-            <option value="bilingue">Bilingue</option>
-            <option value="maternelle">Maternelle</option>
-          </Select>
+        render={({ field, fieldState }) => (
+          <FormControl isInvalid={fieldState.invalid} mb="4">
+            <FormLabel htmlFor="level">Niveau de la Langue</FormLabel>
+            <Select placeholder="Sélectionner votre niveau" {...field}>
+              <option value="debutant">Débutant</option>
+              <option value="intermediaire">Intermédiaire</option>
+              <option value="courant">Courant</option>
+              <option value="bilingue">Bilingue</option>
+              <option value="maternelle">Maternelle</option>
+            </Select>
+            <FormErrorMessage>
+              {fieldState.error && fieldState.error.message}
+            </FormErrorMessage>
+          </FormControl>
         )}
       />
-    </div>
+    </HStack>
   );
 };
 
@@ -112,30 +125,45 @@ export default function LanguagesForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit, (errors, e) => console.log(errors, e))}
-    >
-      <Heading as="h2" size="xl">
-        <MdOutlineLanguage />
-        Languages
-      </Heading>
-      {fields.map((field, index) => (
-        <LanguageInput key={field.id} {...{ control, index, field }} />
-      ))}
-      <Button
-        leftIcon={<IoAddOutline />}
-        colorScheme="teal"
-        variant="outline"
-        type="button"
-        onClick={() =>
-          append({ name: "", level: "" }, { focusName: "languages.0.name" })
-        }
+    <Box mb="4" pos="relative">
+      <form
+        onSubmit={handleSubmit(onSubmit, (errors, e) => console.log(errors, e))}
       >
-        Nouvelle Langue
-      </Button>
-      <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
-        Submit
-      </Button>
-    </form>
+        <Heading
+          as="h2"
+          size="lg"
+          top="0"
+          p="4"
+          mx="-4"
+          pos="sticky"
+          bgColor="gray.50"
+          zIndex="sticky"
+          boxShadow="sm"
+          display="flex"
+          alignItems="center"
+        >
+          <MdOutlineLanguage />
+          <Text as="span" ml="3">
+            Language
+          </Text>
+        </Heading>
+        {fields.map((field, index) => (
+          <LanguageInput key={field.id} {...{ control, index, field }} />
+        ))}
+        <Button
+          leftIcon={<IoAddOutline />}
+          colorScheme="teal"
+          variant="outline"
+          type="button"
+          mb={4}
+          onClick={() =>
+            append({ name: "", level: "" }, { focusName: "languages.0.name" })
+          }
+        >
+          <Text as="span">Nouvelle Langue</Text>
+        </Button>
+      </form>
+      <Divider orientation="horizontal" borderColor="gray.400" />
+    </Box>
   );
 }

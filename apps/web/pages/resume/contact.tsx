@@ -9,10 +9,11 @@ import LanguagesForm from "../../components/languages/LanguagesForm";
 import HobbiesForm from "../../components/hobbies/HobbiesForm";
 import SkillsForm from "../../components/skills/SkillsForm";
 import NetworksForm from "../../components/networks/NetworksForm";
+import { Box } from "@chakra-ui/react";
 
 const Contact: NextPageWithLayout = () => {
   return (
-    <div>
+    <Box>
       <ContactForm />
       <ProfileForm />
       <LocationForm />
@@ -20,7 +21,7 @@ const Contact: NextPageWithLayout = () => {
       <HobbiesForm />
       <SkillsForm />
       <NetworksForm />
-    </div>
+    </Box>
   );
 };
 

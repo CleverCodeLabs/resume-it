@@ -1,11 +1,13 @@
 import { Controller, useForm } from "react-hook-form";
 
 import {
-  Button,
+  Box,
+  Divider,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Heading,
+  HStack,
   Input,
   NumberDecrementStepper,
   NumberIncrementStepper,
@@ -16,6 +18,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   SliderTrack,
+  Text,
   Textarea,
 } from "@chakra-ui/react";
 import React from "react";
@@ -51,95 +54,114 @@ export default function ProfileForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Heading as="h2" size="xl">
-        <RiProfileLine />
-        Profile
-      </Heading>
-      <Controller
-        name="headline"
-        control={control}
-        rules={{
-          required: "This is required",
-          minLength: { value: 4, message: "Minimum length should be 4" },
-        }}
-        render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="headline">Nom de poste</FormLabel>
-            <Input
-              id="headline"
-              placeholder="Votre intitulé de poste"
-              {...{ onChange, onBlur, value, ref }}
-            />
-            <FormErrorMessage>
-              {fieldState.error && fieldState.error.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
+    <Box mb="4" pos="relative">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Heading
+          as="h2"
+          size="lg"
+          top="0"
+          p="4"
+          mx="-4"
+          pos="sticky"
+          bgColor="gray.50"
+          zIndex="sticky"
+          boxShadow="sm"
+          display="flex"
+          alignItems="center"
+        >
+          <RiProfileLine />
+          <Text as="span" ml="3">
+            {" "}
+            Profil
+          </Text>
+        </Heading>
+        <Controller
+          name="headline"
+          control={control}
+          rules={{
+            required: "This is required",
+            minLength: { value: 4, message: "Minimum length should be 4" },
+          }}
+          render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
+            <FormControl isInvalid={fieldState.invalid} mb="4">
+              <FormLabel htmlFor="headline" mt="4">
+                Nom de poste
+              </FormLabel>
+              <Input
+                id="headline"
+                placeholder="Votre intitulé de poste"
+                {...{ onChange, onBlur, value, ref }}
+              />
+              <FormErrorMessage>
+                {fieldState.error && fieldState.error.message}
+              </FormErrorMessage>
+            </FormControl>
+          )}
+        />
 
-      <Controller
-        name="yearsOfXp"
-        control={control}
-        rules={{
-          required: "This is required",
-        }}
-        render={({ field }) => (
-          <FormControl isInvalid={!!errors?.yearsOfXp}>
-            <FormLabel htmlFor="yearsOfXp">Année Expérience</FormLabel>
-            <NumberInput {...field} min={0} max={50} id="yearsOfXp">
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-            <Slider
-              flex="1"
-              min={0}
-              max={50}
-              step={1}
-              focusThumbOnChange={false}
-              {...field}
-            >
-              <SliderTrack>
-                <SliderFilledTrack />
-              </SliderTrack>
-              <SliderThumb fontSize="sm" boxSize="32px">
-                {field.value}
-              </SliderThumb>
-            </Slider>
-            <FormErrorMessage>
-              {errors.yearsOfXp && errors.yearsOfXp.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
-      <Controller
-        name="aboutMe"
-        control={control}
-        rules={{
-          required: "This is required",
-          minLength: { value: 4, message: "Minimum length should be 4" },
-        }}
-        render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-          <FormControl isInvalid={fieldState.invalid}>
-            <FormLabel htmlFor="aboutMe">A propos de moi</FormLabel>
-            <Textarea
-              id="aboutMe"
-              placeholder="Quelques mots sur vous"
-              {...{ onChange, onBlur, value, ref }}
-            />
-            <FormErrorMessage>
-              {fieldState.error && fieldState.error.message}
-            </FormErrorMessage>
-          </FormControl>
-        )}
-      />
-
-      <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
-        Submit
-      </Button>
-    </form>
+        <Controller
+          name="yearsOfXp"
+          control={control}
+          rules={{
+            required: "This is required",
+          }}
+          render={({ field }) => (
+            <FormControl isInvalid={!!errors?.yearsOfXp} mb="4">
+              <FormLabel htmlFor="yearsOfXp">Année Expérience</FormLabel>
+              <HStack spacing="8">
+                <NumberInput {...field} min={0} max={50} id="yearsOfXp" w="32">
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+                <Slider
+                  flex="1"
+                  min={0}
+                  max={50}
+                  step={1}
+                  focusThumbOnChange={false}
+                  w="32"
+                  {...field}
+                >
+                  <SliderTrack>
+                    <SliderFilledTrack />
+                  </SliderTrack>
+                  <SliderThumb fontSize="sm" boxSize="32px">
+                    {field.value}
+                  </SliderThumb>
+                </Slider>
+              </HStack>
+              <FormErrorMessage>
+                {errors.yearsOfXp && errors.yearsOfXp.message}
+              </FormErrorMessage>
+            </FormControl>
+          )}
+        />
+        <Controller
+          name="aboutMe"
+          control={control}
+          rules={{
+            required: "This is required",
+            minLength: { value: 4, message: "Minimum length should be 4" },
+          }}
+          render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
+            <FormControl isInvalid={fieldState.invalid} mb="4">
+              <FormLabel htmlFor="aboutMe">A propos de moi</FormLabel>
+              <Textarea
+                id="aboutMe"
+                placeholder="Quelques mots sur vous"
+                {...{ onChange, onBlur, value, ref }}
+              />
+              <FormErrorMessage>
+                {fieldState.error && fieldState.error.message}
+              </FormErrorMessage>
+            </FormControl>
+          )}
+        />
+        <Divider orientation="horizontal" borderColor="gray.400" />
+      </form>
+    </Box>
   );
 }
