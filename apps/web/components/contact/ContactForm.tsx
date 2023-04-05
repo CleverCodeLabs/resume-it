@@ -9,8 +9,11 @@ import {
   Heading,
   Input,
   Text,
+  Container,
+  Image,
+  Button,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { RiContactsLine } from "react-icons/ri";
 
 interface ContactFormInput {
@@ -18,6 +21,7 @@ interface ContactFormInput {
   phoneNumber: string;
   emailAddress: string;
   dateOfBirth: number;
+  photo: string;
 }
 
 export default function ContactForm() {
@@ -32,8 +36,13 @@ export default function ContactForm() {
       phoneNumber: "",
       emailAddress: "",
       dateOfBirth: 1,
+      photo: "",
     },
   });
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [selectedImage, setSelectedImage] = useState<File | null | undefined>();
+  const [preview, setPreview] = useState<string | null | undefined>();
 
   function onSubmit(values: any): Promise<void> {
     return new Promise((resolve) => {
@@ -42,6 +51,27 @@ export default function ContactForm() {
         resolve();
       }, 3000);
     });
+  }
+
+  useEffect(() => {
+    if (selectedImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result as string);
+      };
+      reader.readAsDataURL(selectedImage);
+    } else {
+      setPreview(null);
+    }
+  });
+
+  function previewImage(event: any) {
+    const file = event.target.files[0];
+    if (file && file.type.substr(0, 5) === "image") {
+      setSelectedImage(file);
+    } else {
+      setSelectedImage(null);
+    }
   }
 
   return (
@@ -97,7 +127,7 @@ export default function ContactForm() {
             minLength: { value: 4, message: "Minimum length should be 4" },
             pattern: {
               value: /(06|07)[0-9]{8}/,
-              message: "entrez un numéro de téléphone",
+              message: "Entrez un numéro de téléphone",
             },
           }}
           render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
@@ -158,7 +188,56 @@ export default function ContactForm() {
             </FormControl>
           )}
         />
-        <Text mb="4">Photo</Text>
+        <Controller
+          name="photo"
+          control={control}
+          render={({ fieldState }) => (
+            <FormControl
+              isInvalid={fieldState.invalid}
+              mb="4"
+              display="flex"
+              flexDirection="column"
+              gap="4"
+            >
+              <FormLabel htmlFor="photo">Votre Photo</FormLabel>
+              <Button
+                onClick={(event) => {
+                  event.preventDefault();
+                  if (fileInputRef.current) {
+                    fileInputRef.current.click();
+                  }
+                }}
+              >
+                Ajouter Votre Photo
+              </Button>
+              <Input
+                id="photo"
+                accept="image/*"
+                type="file"
+                onChange={previewImage}
+                ref={fileInputRef}
+                display="none"
+              />
+              {preview ? (
+                <Container
+                  maxW="sm"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Image
+                    src={preview}
+                    borderRadius="full"
+                    alt="Photo de Résume"
+                  />
+                </Container>
+              ) : null}
+              <FormErrorMessage>
+                {fieldState.error && fieldState.error.message}
+              </FormErrorMessage>
+            </FormControl>
+          )}
+        />
       </form>
       <Divider orientation="horizontal" borderColor="gray.400" />
     </Box>
