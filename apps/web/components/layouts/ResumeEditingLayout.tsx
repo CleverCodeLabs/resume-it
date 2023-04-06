@@ -1,7 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import { FC, PropsWithChildren } from "react";
 import Navbar from "../nav/nav";
-
+import Preview from "../preview/Preview";
 export type BaseLayoutProps = PropsWithChildren;
 
 const ResumeEditingLayout: FC<BaseLayoutProps> = ({ children }) => {
@@ -23,8 +23,8 @@ const ResumeEditingLayout: FC<BaseLayoutProps> = ({ children }) => {
       >
         {children}
       </GridItem>
-      <GridItem pl="2" bg="blue.300" area={"preview"}>
-        Preview
+      <GridItem pl="2" bg="white" area={"preview"}>
+        <Preview />
       </GridItem>
     </Grid>
   );
