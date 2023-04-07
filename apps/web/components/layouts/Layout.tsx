@@ -10,7 +10,6 @@ const Layout: FC<BaseLayoutProps> = ({children}) => {
       gridTemplateRows={"60px 1fr"}
       h="100vh"
       color="blackAlpha.700"
-      fontWeight="bold"
     >
       <GridItem bg="orange.300" area={"header"}>
         Header

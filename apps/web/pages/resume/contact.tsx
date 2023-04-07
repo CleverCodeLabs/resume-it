@@ -8,7 +8,7 @@ import LocationForm from "../../components/location/LocationForm";
 import LanguagesForm from "../../components/languages/LanguagesForm";
 import HobbiesForm from "../../components/hobbies/HobbiesForm";
 import SkillsForm from "../../components/skills/SkillsForm";
-import NetworksForm from "../../components/networks/NetworksForm";
+import Networks from "../../components/networks/Networks";
 import { Box } from "@chakra-ui/react";
 
 const Contact: NextPageWithLayout = () => {
@@ -20,7 +20,7 @@ const Contact: NextPageWithLayout = () => {
       <LanguagesForm />
       <HobbiesForm />
       <SkillsForm />
-      <NetworksForm />
+      <Networks />
     </Box>
   );
 };
