@@ -30,7 +30,7 @@ interface SkillsFormInput {
   level: number;
 }
 
-export default function SkillsForm() {
+export default function SkillsFormOld() {
   const {
     control,
     handleSubmit,
