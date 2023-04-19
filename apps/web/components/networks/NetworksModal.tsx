@@ -2,7 +2,6 @@ import {
   Button,
   FormControl,
   FormErrorMessage,
-  FormLabel,
   Input,
   Modal,
   ModalBody,
@@ -11,16 +10,17 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Select,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { Controller, useForm } from "react-hook-form";
-import React, { FC } from "react";
+import React, { ElementType, FC } from "react";
+import Select, { Option } from "../select/Select";
+import { Network, netWorkIcons } from "./network";
 
 interface NetworksModalInput {
   id?: number;
-  name: string;
+  network: { name: string; icon: ElementType };
   link: string;
 }
 
@@ -41,7 +41,10 @@ const NetworksModal: FC<NetworksModalProps> = ({
     mode: "onBlur",
     values: {
       id: network?.id,
-      name: network?.name || "",
+      network: {
+        name: network?.name || "",
+        icon: network?.icon,
+      },
       link: network?.link || "",
     },
   });
@@ -55,6 +58,11 @@ const NetworksModal: FC<NetworksModalProps> = ({
     onSave(getValues());
     handleClose();
   };
+  const options: Option[] = Object.values(Network).map((network, index) => ({
+    id: index,
+    name: network,
+    icon: netWorkIcons[network],
+  }));
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose}>
@@ -70,7 +78,7 @@ const NetworksModal: FC<NetworksModalProps> = ({
         <ModalCloseButton />
         <ModalBody>
           <Controller
-            name="name"
+            name="network"
             control={control}
             rules={{
               required: "This is required",
@@ -80,18 +88,7 @@ const NetworksModal: FC<NetworksModalProps> = ({
               fieldState,
             }) => (
               <FormControl isInvalid={fieldState.invalid} mb="4">
-                <FormLabel htmlFor="name">Nom du Réseau Social</FormLabel>
-                <Select
-                  id="name"
-                  placeholder="Sélectionner votre Réseau Social"
-                  {...{ onChange, onBlur, value, ref }}
-                >
-                  <option value="Facebook">Facebook</option>
-                  <option value="LinkedIn">LinkedIn</option>
-                  <option value="GitHub">GitHub</option>
-                  <option value="Portfolio">Portfolio</option>
-                  <option value="Autre">Autre</option>
-                </Select>
+                <Select {...{ onChange, onBlur, value, options }} />
               </FormControl>
             )}
           />
@@ -112,7 +109,7 @@ const NetworksModal: FC<NetworksModalProps> = ({
               <FormControl isInvalid={fieldState.invalid} mb="4">
                 <Input
                   id="link"
-                  placeholder={`Votre Lien ${watch("name")}`}
+                  placeholder={`Votre Lien ${watch("network.name")}`}
                   {...{ onChange, onBlur, value, ref }}
                 />
                 <FormErrorMessage>

@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import React, { ElementType, FC } from "react";
 import {
   Box,
   Flex,
+  Icon,
   IconButton,
   ListItem,
   Menu,
@@ -10,7 +11,7 @@ import {
   MenuList,
   Portal,
   Spacer,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { MdDeleteOutline } from "react-icons/md";
 import { FiEdit3 } from "react-icons/fi";
@@ -20,39 +21,59 @@ type NetworkItemProps = {
   id: number;
   name: string;
   link: string;
+  icon: ElementType;
   onEdit: (network: any) => void;
   onDelete: () => void;
 };
 
-const NetworkItem: FC<NetworkItemProps> = ({ name, link, onEdit, onDelete }) => {
+const NetworkItem: FC<NetworkItemProps> = ({
+  name,
+  link,
+  icon,
+  onEdit,
+  onDelete,
+}) => {
   return (
-      <ListItem border="1px" borderColor="gray.200" borderRadius="md" mb="2" pr={2}>
-        <Flex alignItems="center">
-          <Box>
-            <Text p="2" as='b'>{name}</Text>
-            <Text p="2">{link}</Text>
+    <ListItem
+      border="1px"
+      borderColor="gray.200"
+      borderRadius="md"
+      mb="2"
+      pr={2}
+    >
+      <Flex alignItems="center">
+        <Box>
+          <Box display="flex" alignItems="center" pl="2">
+            <Icon as={icon} />
+            <Text p="2" as="b">
+              {name}
+            </Text>
           </Box>
-          <Spacer />
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<RxDotsVertical />}
-              variant="outline"
-              borderRadius={"full"}
-              border="none"
-            />
-            <Portal>
+          <Text p="2">{link}</Text>
+        </Box>
+        <Spacer />
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label="Options"
+            icon={<RxDotsVertical />}
+            variant="outline"
+            borderRadius={"full"}
+            border="none"
+          />
+          <Portal>
             <MenuList zIndex={"popover"}>
               <MenuItem icon={<FiEdit3 />} onClick={onEdit}>
                 Modifier
               </MenuItem>
-              <MenuItem icon={<MdDeleteOutline />} onClick={onDelete}>Supprimer</MenuItem>
+              <MenuItem icon={<MdDeleteOutline />} onClick={onDelete}>
+                Supprimer
+              </MenuItem>
             </MenuList>
-            </Portal>
-          </Menu>
-        </Flex>
-      </ListItem>
+          </Portal>
+        </Menu>
+      </Flex>
+    </ListItem>
   );
 };
 
