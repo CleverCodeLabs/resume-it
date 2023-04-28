@@ -1,12 +1,12 @@
-import Identity from "../components/Identity";
-import SkillsList from "../components/SkillsList";
-import LanguagesList from "../components/LanguagesList";
-import HobbiesList from "../components/HobbiesList";
-import AboutMe from "../components/AboutMe";
-import TimelineList from "../components/TimelineList";
-import EducationsList from "../components/EducationsList";
-import SoftSkillsList from "../components/SoftSkillsList";
-import WorkExperienceList from "../components/WorkExperiencesList";
+import Identity from "../templates/basic/components/Identity";
+import SkillsList from "../templates/basic/components/SkillsList";
+import LanguagesList from "../templates/basic/components/LanguagesList";
+import HobbiesList from "../templates/basic/components/HobbiesList";
+import AboutMe from "../templates/basic/components/AboutMe";
+import TimelineList from "../templates/basic/components/TimelineList";
+import EducationsList from "../templates/basic/components/EducationsList";
+import SoftSkillsList from "../templates/basic/components/SoftSkillsList";
+import WorkExperienceList from "../templates/basic/components/WorkExperiencesList";
 import { resumeJson } from "./resume-json";
 
 export default function Resume() {

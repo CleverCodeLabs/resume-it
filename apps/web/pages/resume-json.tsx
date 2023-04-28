@@ -1,4 +1,4 @@
-import { Resume } from "../components/resume";
+import { Resume } from "../templates/basic/components/resume";
 
 export const resumeJson: Resume = {
   name: "Philippe Wronski",
@@ -28,17 +28,17 @@ export const resumeJson: Resume = {
     {
       name: "Angular",
       level: 4,
-    }
+    },
   ],
   languages: [
     {
       name: "Francais",
-      level: 5,
+      level: "Maternelle",
     },
     {
       name: "Anglais",
-      level: 3,
-    }
+      level: "Courant",
+    },
   ],
   hobbies: [
     { name: "Jeux Vidéo" },
@@ -46,43 +46,45 @@ export const resumeJson: Resume = {
     { name: "Randonnée" },
     { name: "VTT" },
   ],
-  aboutMe: "Lead Technique, j'ai travaillé sur des sujets à fort challenge autour des technologies Java/JEE (Web/mobile) et Front dans divers domaines : Industrie automobile / Bâtiment / Transport ferroviaire, Assurance et Energie.\n" +
-    "Fort de 12 ans d'expérience, mon parcours dans le domaine de l'Informatique applicative, m'a permis d'acquérir une forte compétence dans la conception, le développement, l’innovation et l’écoute du client.\n" +
-    "Depuis 4 ans, j’occupe le rôle de lead technique dans lequel j’ai pu développer mon appétence pour l’agilité, l’automatisation (DevOps) et le webdesign.",
+  aboutMe:
+    "Lead Technique, j'ai travaillé sur des sujets à fort challenge autour des technologies Java/JEE (Web/mobile) et Front dans divers domaines : Industrie automobile / Bâtiment / Transport ferroviaire, Assurance et Energie.\n " +
+    "\nFort de 12 ans d'expérience, mon parcours dans le domaine de l'Informatique applicative, m'a permis d'acquérir une forte compétence dans la conception, le développement, l’innovation et l’écoute du client.\n" +
+    "\nDepuis 4 ans, j’occupe le rôle de lead technique dans lequel j’ai pu développer mon appétence pour l’agilité, l’automatisation (DevOps) et le webdesign.",
   timeline: [
     {
       year: 2010,
       headLine: "Developer",
-      companyName: "PSA"
+      companyName: "PSA",
     },
     {
       year: 2016,
       headLine: "Lead Tech",
-      companyName: "Sobre"
+      companyName: "Sobre",
     },
     {
       year: 2017,
       headLine: "Lead Tech",
-      companyName: "Cycle Up"
+      companyName: "Cycle Up",
     },
     {
       year: 2018,
       headLine: "Developer",
-      companyName: "Oui.sncf"
-    },{
-      year: 2019,
-      headLine: "Lead Tech",
-      companyName: "Carrefour"
+      companyName: "Oui.sncf",
     },
     {
       year: 2019,
       headLine: "Lead Tech",
-      companyName: "Terega"
+      companyName: "Carrefour",
+    },
+    {
+      year: 2019,
+      headLine: "Lead Tech",
+      companyName: "Terega",
     },
     {
       year: 2021,
       headLine: "Lead Tech",
-      companyName: "BforBank"
+      companyName: "BforBank",
     },
   ],
   educations: [
@@ -95,29 +97,29 @@ export const resumeJson: Resume = {
       name: "DUT Information",
       nameInstitution: "IUT Belfort",
       year: 2002,
-    }
+    },
   ],
-  softSkills:[
+  softSkills: [
     {
       nameProfile: "Compétences organisationnelles",
-      value: 4
+      value: 4,
     },
     {
       nameProfile: "Compétences relationnelles",
-      value: 4.5
+      value: 4.5,
     },
     {
       nameProfile: "Compétences personnelles",
-      value: 4
+      value: 4,
     },
     {
       nameProfile: "Engagement au travail",
-      value: 4.5
+      value: 4.5,
     },
     {
       nameProfile: "Compétences managériales",
-      value: 3
-    }
+      value: 3,
+    },
   ],
   workExperiences: [
     {
@@ -125,7 +127,8 @@ export const resumeJson: Resume = {
       headLine: "Lead Tech",
       duration: "1an et 2mois",
       numberOfTeamMembers: 12,
-      projectTitle: "Conception de l’architecture et développement du CRM pour la nouvelle offre bancaire de Bforbank",
+      projectTitle:
+        "Conception de l’architecture et développement du CRM pour la nouvelle offre bancaire de Bforbank",
       tasks: [
         "Création d’ADR pour l’architecture et les technologies utilisées.",
         "Mise en place d’un architecture Micro Frontend.",
@@ -137,9 +140,9 @@ export const resumeJson: Resume = {
         "Réalisation de tests unitaires et d’intégration",
         "Réalisation de documentation technique et d’architecture.",
         "Relectures, cadrage techniques de l’équipe.",
-        "Suivi des déploiement, analyse et correction d’anomalie."
+        "Suivi des déploiement, analyse et correction d’anomalie.",
       ],
-      technicalEnvironment:[
+      technicalEnvironment: [
         {
           name: "ENVIRONNEMENT",
           description: [
@@ -151,8 +154,8 @@ export const resumeJson: Resume = {
             "Node.js",
             "Nx",
             "Gitlab CI",
-            "Git OPS"
-          ]
+            "Git OPS",
+          ],
         },
         {
           name: "BACKEND",
@@ -161,8 +164,8 @@ export const resumeJson: Resume = {
             "PostgreSQL",
             "Kafka",
             "Kafka Connect",
-            "Jest"
-          ]
+            "Jest",
+          ],
         },
         {
           name: "FRONTEND",
@@ -170,23 +173,22 @@ export const resumeJson: Resume = {
             "Rest.js",
             "Jest / React testing library / Cypress",
             "Storybook",
-            "Material UI"
-          ]
+            "Material UI",
+          ],
         },
         {
           name: "AGILITE",
-          description: [
-            "Safe"
-          ]
-        }
-      ]
+          description: ["Safe"],
+        },
+      ],
     },
     {
       companyName: "BforBank",
       headLine: "Lead Tech",
       duration: "6mois",
       numberOfTeamMembers: 4,
-      projectTitle: "Développement d’un outil de modélisation de processus du métier bancaire de Bforbank. Ainsi que les relations entre les différents système.",
+      projectTitle:
+        "Développement d’un outil de modélisation de processus du métier bancaire de Bforbank. Ainsi que les relations entre les différents système.",
       tasks: [
         "Création d’ADR pour l’architecture et les technologies utilisées.",
         "Participation au DSM, Grooming (hebdomadaire), Review (toutes les 2 semaines)",
@@ -195,48 +197,43 @@ export const resumeJson: Resume = {
         "Conceptions technique et fonctionnelle en relation avec le client.",
         "Réalisation de tests unitaires et d’intégration",
         "Réalisation de documentation technique et d’architecture.",
-        "Suivi des déploiement, analyse et correction d’anomalie."
+        "Suivi des déploiement, analyse et correction d’anomalie.",
       ],
-      technicalEnvironment:[
+      technicalEnvironment: [
         {
           name: "ENVIRONNEMENT",
           description: [
             "Docker",
             "Typescript",
             "Node.js",
-            "Bitbucket pipeline"
-          ]
+            "Bitbucket pipeline",
+          ],
         },
         {
           name: "BACKEND",
-          description: [
-            "Nest.js",
-            "Neo4J",
-            "Jest"
-          ]
+          description: ["Nest.js", "Neo4J", "Jest"],
         },
         {
           name: "FRONTEND",
           description: [
             "Angular",
             "Jest / Angular testing library",
-            "Angular Material"
-          ]
+            "Angular Material",
+          ],
         },
         {
           name: "AGILITE",
-          description: [
-            "Scrum",
-          ]
-        }
-      ]
+          description: ["Scrum"],
+        },
+      ],
     },
     {
       companyName: "Terega",
       headLine: "Lead Tech",
       duration: "1an et 6mois",
       numberOfTeamMembers: 11,
-      projectTitle: "Domain de l’assurance, Safety est une application pour la comparaison d'assurance.",
+      projectTitle:
+        "Domain de l’assurance, Safety est une application pour la comparaison d'assurance.",
       tasks: [
         "Contexte international à forte contraintes légales.",
         "Migration Angular 5 à 11",
@@ -247,15 +244,12 @@ export const resumeJson: Resume = {
         "Réalisation de tests unitaires et d’intégration",
         "Réalisation de documentation technique et d’architecture.",
         "Relectures, cadrage techniques de l’équipe.",
-        "Suivi des déploiement, analyse et correction d’anomalie."
+        "Suivi des déploiement, analyse et correction d’anomalie.",
       ],
-      technicalEnvironment:[
+      technicalEnvironment: [
         {
           name: "ENVIRONNEMENT",
-          description: [
-            "AWS (lambda, API Gateway)",
-            "Node.js"
-          ]
+          description: ["AWS (lambda, API Gateway)", "Node.js"],
         },
         {
           name: "BACKEND",
@@ -265,8 +259,8 @@ export const resumeJson: Resume = {
             "Webpack",
             "PostgreSQL",
             "DynamoDB",
-            "Flyway"
-          ]
+            "Flyway",
+          ],
         },
         {
           name: "FRONTEND",
@@ -274,23 +268,22 @@ export const resumeJson: Resume = {
             "Angular",
             "Jest / Angular testing library",
             "Angular Material",
-            "Sass"
-          ]
+            "Sass",
+          ],
         },
         {
           name: "AGILITE",
-          description: [
-            "Safe"
-          ]
-        }
-      ]
+          description: ["Safe"],
+        },
+      ],
     },
     {
       companyName: "Oui.scnf ",
       headLine: "Fullstack Developer",
       duration: "1an et 6mois",
       numberOfTeamMembers: 12,
-      projectTitle: "Domaine du transport ferroviaire, site web grand publique pour la vente de titre de transport ferroviaire. Dans l'équipe qui gère le panier (Loki) du site Oui.sncf.",
+      projectTitle:
+        "Domaine du transport ferroviaire, site web grand publique pour la vente de titre de transport ferroviaire. Dans l'équipe qui gère le panier (Loki) du site Oui.sncf.",
       tasks: [
         "Participation au DSM, Grooming (hebdomadaire), Review (toutes les 2 semaines)",
         "Suivi de production et livraison en production chaque semaine (capitaine de prod)",
@@ -303,9 +296,9 @@ export const resumeJson: Resume = {
         "Participation au développement de la brique d'achat des cartes commerciales",
         "Création de dashboard Kibana",
         "Composants responsive et accéssible",
-        "Création de TU/TI"
+        "Création de TU/TI",
       ],
-      technicalEnvironment:[
+      technicalEnvironment: [
         {
           name: "ENVIRONNEMENT",
           description: [
@@ -315,8 +308,8 @@ export const resumeJson: Resume = {
             "Gitlab CI",
             "Nexus",
             "Kibana",
-            "Architecture Hexagonale"
-          ]
+            "Architecture Hexagonale",
+          ],
         },
         {
           name: "BACKEND",
@@ -327,8 +320,8 @@ export const resumeJson: Resume = {
             "Mockito",
             "Mapstruct",
             "Maven",
-            "Cucumber"
-          ]
+            "Cucumber",
+          ],
         },
         {
           name: "FRONTEND",
@@ -337,22 +330,18 @@ export const resumeJson: Resume = {
             "Jest / React testing library",
             "Storybook",
             "Webpack",
-            "Sass"
-          ]
+            "Sass",
+          ],
         },
         {
           name: "AGILITE",
-          description: [
-            "Scrum & Kanban",
-          ]
-        }
-      ]
+          description: ["Scrum & Kanban"],
+        },
+      ],
     },
-  ]
-}
+  ],
+};
 
 export default function ResumeJson() {
-  return (
-    <pre>{JSON.stringify(resumeJson, null, 2)}</pre>
-  );
+  return <pre>{JSON.stringify(resumeJson, null, 2)}</pre>;
 }

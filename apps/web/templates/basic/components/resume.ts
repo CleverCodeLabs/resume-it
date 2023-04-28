@@ -14,15 +14,18 @@ export interface Resume {
 
 export interface Skill {
   name: string;
-  level:number;
+  level: number;
 }
+
 export interface Language {
   name: string;
-  level:number;
+  level: string;
 }
+
 export interface Hobby {
   name: string;
 }
+
 export interface TimeLineEvent {
   year: number;
   headLine: string;
@@ -39,6 +42,7 @@ export interface SoftSkill {
   nameProfile: string;
   value: number;
 }
+
 export interface WorkExperience {
   companyName: string;
   headLine: string;
@@ -46,7 +50,7 @@ export interface WorkExperience {
   numberOfTeamMembers: number;
   projectTitle: string;
   tasks: string[];
-  technicalEnvironment : TechnicalEnvironment[];
+  technicalEnvironment: TechnicalEnvironment[];
 }
 
 export interface TechnicalEnvironment {

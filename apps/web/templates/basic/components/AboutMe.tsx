@@ -1,3 +1,4 @@
+import { Text } from "@chakra-ui/react";
 import React, { Component } from "react";
 
 type AboutMeProps = {
@@ -8,9 +9,15 @@ export default class AboutMe extends Component<AboutMeProps> {
   render() {
     const { aboutMe } = this.props;
     return (
-      <div className="aboutMe">
-        <p>{aboutMe}</p>
-      </div>
+      <Text
+        fontSize={13}
+        ml="4"
+        color="black"
+        whiteSpace="pre-line"
+        textAlign="justify"
+      >
+        {aboutMe}
+      </Text>
     );
   }
 }
