@@ -1,6 +1,7 @@
 import React from "react";
 import { Education } from "./resume";
 import EducationItem from "./EducationItem";
+import { UnorderedList } from "@chakra-ui/react";
 
 type EducationsProps = {
   educations: Education[];
@@ -16,7 +17,11 @@ function EducationsList(props: EducationsProps) {
       year={education.year}
     />
   ));
-  return <ul>{listItems}</ul>;
+  return (
+    <UnorderedList listStyleType="none" ml="0" mt="2">
+      {listItems}
+    </UnorderedList>
+  );
 }
 
 export default EducationsList;

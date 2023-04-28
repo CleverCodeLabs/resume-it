@@ -1,6 +1,7 @@
 import React from "react";
 import { Language } from "./resume";
 import LanguageItem from "./LanguageItem";
+import { UnorderedList } from "@chakra-ui/react";
 
 type LanguagesProps = {
   languages: Language[];
@@ -15,7 +16,11 @@ function LanguagesList(props: LanguagesProps) {
       level={language.level}
     />
   ));
-  return <ul>{listItems}</ul>;
+  return (
+    <UnorderedList listStyleType="none" ml="0" mt="2">
+      {listItems}
+    </UnorderedList>
+  );
 }
 
 export default LanguagesList;
