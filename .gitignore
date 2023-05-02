@@ -21,6 +21,7 @@ build
 .DS_Store
 *.pem
 .idea
+/data
 
 # debug
 npm-debug.log*

@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model resume {
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  fullName          String
+  headline          String
+  yearsOfExperience Int
+  skills            Skill[]
+  languages         Language[]
+  hobbies           String[]
+  aboutMe           String
+  educations        Education[]
+  softSkills        SoftSkill[]
+  workExperiences   WorkExperience[]
+}
+
+type Skill {
+  name        String
+  isPrincipal Boolean
+}
+
+type Language {
+  name  String
+  level String
+}
+
+type Education {
+  name            String
+  nameInstitution String
+  year            Int
+}
+
+type SoftSkill {
+  name  String
+  value Float
+}
+
+type WorkExperience {
+  companyName          String
+  headLine             String
+  duration             String
+  numberOfTeamMembers  Int
+  projectTitle         String
+  tasks                String[]
+  technicalEnvironment TechnicalEnvironment[]
+}
+
+type TechnicalEnvironment {
+  name        String
+  description String
+}
