@@ -7,11 +7,15 @@ node_modules
 
 # testing
 coverage
+/.nyc_output
 
 # next.js
 .next/
 out/
 build
+
+# compiled output
+/dist
 
 # misc
 .DS_Store
@@ -33,3 +37,28 @@ yarn-error.log*
 # turbo
 .turbo
 /apps/web/public/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
