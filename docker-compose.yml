@@ -6,9 +6,6 @@ services:
     restart: always
     container_name: mongodb
     environment:
-      MONGO_INITDB_USERNAME: "resumeit"
-      MONGO_INITDB_PASSWORD: "password"
-      MONGO_INITDB_DATABASE: "resume-it"
       MONGO_REPLICA_HOST: "localhost"
       MONGO_REPLICA_PORT: "27017"
     volumes:
