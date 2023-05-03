@@ -15,7 +15,7 @@ out/
 build
 
 # compiled output
-/dist
+dist/
 
 # misc
 .DS_Store
