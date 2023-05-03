@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model resume {
+model Resume {
   id                String           @id @default(auto()) @map("_id") @db.ObjectId
   fullName          String
   headline          String
