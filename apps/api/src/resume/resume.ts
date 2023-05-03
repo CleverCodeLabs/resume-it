@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, PartialType } from '@nestjs/swagger';
 
 export class SkillInput {
   @ApiProperty()
@@ -66,11 +66,11 @@ export class TechnicalEnvironmentInput {
   description: string;
 }
 
-export class CreateResumeInput {
+export class CreateResumeRequest {
   @ApiProperty()
   fullName: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: true })
   headline: string;
 
   @ApiProperty()
@@ -97,3 +97,7 @@ export class CreateResumeInput {
   @ApiProperty({ type: [WorkExperienceInput] })
   workExperiences: WorkExperienceInput[];
 }
+
+export class UpdateResumeRequest extends CreateResumeRequest {}
+
+export class PatchResumeRequest extends PartialType(UpdateResumeRequest) {}
