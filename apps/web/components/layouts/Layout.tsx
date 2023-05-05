@@ -3,7 +3,7 @@ import { FC, PropsWithChildren } from "react";
 
 export type BaseLayoutProps = PropsWithChildren;
 
-const Layout: FC<BaseLayoutProps> = ({children}) => {
+const Layout: FC<BaseLayoutProps> = ({ children }) => {
   return (
     <Grid
       templateAreas={`"header" "main"`}
@@ -14,9 +14,7 @@ const Layout: FC<BaseLayoutProps> = ({children}) => {
       <GridItem bg="orange.300" area={"header"}>
         Header
       </GridItem>
-      <GridItem bg="lightgrey" area={"main"}>
-        {children}
-      </GridItem>
+      <GridItem area={"main"}>{children}</GridItem>
     </Grid>
   );
 };
