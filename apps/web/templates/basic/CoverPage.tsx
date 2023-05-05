@@ -1,15 +1,15 @@
 import { Box, Heading, Image, Stack, StackDivider } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import Page from "../../components/page/Page";
-import { resumeJson } from "../../pages/resume-json";
-import AboutMe from "./components/AboutMe";
-import EducationsList from "./components/EducationsList";
-import HobbiesList from "./components/HobbiesList";
 import Identity from "./components/Identity";
-import LanguagesList from "./components/LanguagesList";
 import RadarChart from "./components/RadarChart";
+import { ResumeContext } from "../../context/ResumeContext";
 import SkillsList from "./components/SkillsList";
+import LanguagesList from "./components/LanguagesList";
+import HobbiesList from "./components/HobbiesList";
+import AboutMe from "./components/AboutMe";
 import TimelineList from "./components/TimelineList";
+import EducationsList from "./components/EducationsList";
 
 export default function CoverPage() {
   const {
@@ -24,7 +24,20 @@ export default function CoverPage() {
     educations,
     softSkills,
     workExperiences,
-  } = resumeJson;
+  } = useContext(ResumeContext);
+  // const {
+  //   name,
+  //   headline,
+  //   yearsOfExperience,
+  //   skills,
+  //   languages,
+  //   hobbies,
+  //   aboutMe,
+  //   timeline,
+  //   educations,
+  //   softSkills,
+  //   workExperiences,
+  // } = resumeJson;
   return (
     <Page>
       <Stack
@@ -57,21 +70,21 @@ export default function CoverPage() {
             <Heading as="h4" size="md" mb="4" color="black">
               COMPETENCES
             </Heading>
-            <SkillsList skills={skills} />
+            <SkillsList skills={skills || []} />
           </Box>
 
           <Box>
             <Heading as="h4" size="md" mb="4" color="black">
               LANGUES
             </Heading>
-            <LanguagesList languages={languages} />
+            <LanguagesList languages={languages || []} />
           </Box>
 
           <Box>
             <Heading as="h4" size="md" mb="4" color="black">
               HOBBIES
             </Heading>
-            <HobbiesList hobbies={hobbies} />
+            <HobbiesList hobbies={hobbies || []} />
           </Box>
         </Stack>
 
@@ -109,7 +122,7 @@ export default function CoverPage() {
               width="14"
               borderRadius="3"
             ></Box>
-            <TimelineList timeline={timeline} />
+            <TimelineList timeline={timeline || []} />
           </Box>
 
           <Box>
@@ -125,7 +138,7 @@ export default function CoverPage() {
               width="14"
               borderRadius="2"
             ></Box>
-            <EducationsList educations={educations} />
+            <EducationsList educations={educations || []} />
           </Box>
 
           <Box>

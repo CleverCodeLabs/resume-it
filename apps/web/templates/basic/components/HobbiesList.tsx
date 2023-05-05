@@ -1,16 +1,15 @@
 import { Wrap } from "@chakra-ui/react";
 import React from "react";
 import HobbyItem from "./HobbyItem";
-import { Hobby } from "./resume";
 
 type HobbiesProps = {
-  hobbies: Hobby[];
+  hobbies: string[];
 };
 
 function HobbiesList(props: HobbiesProps) {
   const { hobbies } = props;
   const listItems = hobbies.map((hobby) => (
-    <HobbyItem key={hobby.name} name={hobby.name} />
+    <HobbyItem key={hobby} name={hobby} />
   ));
   return <Wrap spacing={1}>{listItems}</Wrap>;
 }
