@@ -1,15 +1,15 @@
 export interface Resume {
-  name: string;
-  headline: string;
-  yearsOfExperience: number;
-  skills: Skill[];
-  languages: Language[];
-  hobbies: Hobby[];
-  aboutMe: string;
-  timeline: TimeLineEvent[];
-  educations: Education[];
-  softSkills: SoftSkill[];
-  workExperiences: WorkExperience[];
+  name?: string;
+  headline?: string;
+  yearsOfExperience?: number;
+  skills?: Skill[];
+  languages?: Language[];
+  hobbies?: string[];
+  aboutMe?: string;
+  timeline?: TimeLineEvent[];
+  educations?: Education[];
+  softSkills?: SoftSkill[];
+  workExperiences?: WorkExperience[];
 }
 
 export interface Skill {

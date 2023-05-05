@@ -2,9 +2,9 @@ import { Box, Text } from "@chakra-ui/react";
 import React, { Component } from "react";
 
 type IdentityProps = {
-  name: string;
-  headline: string;
-  yearsOfExperience: number;
+  name?: string;
+  headline?: string;
+  yearsOfExperience?: number;
 };
 
 export default class Identity extends Component<IdentityProps> {

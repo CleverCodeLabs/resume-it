@@ -2,7 +2,7 @@ import { Text } from "@chakra-ui/react";
 import React, { Component } from "react";
 
 type AboutMeProps = {
-  aboutMe: String;
+  aboutMe?: String;
 };
 
 export default class AboutMe extends Component<AboutMeProps> {
