@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   ChartOptions,
@@ -8,10 +7,12 @@ import {
   RadialLinearScale,
   Tooltip,
 } from "chart.js";
+import React from "react";
 import { Radar } from "react-chartjs-2";
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 const options: ChartOptions = {
+  animation: false,
   scales: {
     r: {
       min: 0,

@@ -1,12 +1,13 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import React, { FC, PropsWithChildren } from "react";
-import Navbar from "../nav/nav";
 import CoverPage from "../../templates/basic/CoverPage";
 import axios from "axios";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import { ResumeProvider } from "../../context/ResumeContext";
 import { Resume } from "../../templates/basic/components/resume";
+import Navbar from "../nav/nav";
+import Preview from "../preview/Preview";
 
 export type BaseLayoutProps = PropsWithChildren;
 
@@ -33,17 +34,18 @@ const ResumeEditingLayout: FC<BaseLayoutProps> = ({ children }) => {
           <Navbar />
         </GridItem>
         <GridItem
-          pl="2"
           px="4"
-          bg="gray.50"
-          area={"main"}
-          overflowY="scroll"
-          h="calc(100vh - 60px)"
-        >
-          {children}
-        </GridItem>
-        <GridItem pl="2" bg="blue.300" area={"preview"}>
+        bg="gray.50"
+        area={"main"}
+        overflowY="scroll"
+        h="calc(100vh - 60px)"
+      >
+        {children}
+      </GridItem>
+      <GridItem area={"preview"}>
+        <Preview>
           <CoverPage />
+        </Preview>
         </GridItem>
       </Grid>
     </ResumeProvider>

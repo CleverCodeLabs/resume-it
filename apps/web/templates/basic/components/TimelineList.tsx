@@ -9,9 +9,9 @@ type TimelineProps = {
 
 function TimelineList(props: TimelineProps) {
   const { timeline } = props;
-  const listItems = timeline.map((timeLineEvent) => (
+  const listItems = timeline.map((timeLineEvent, index) => (
     <TimeLineEventItem
-      key={timeLineEvent.year}
+      key={index}
       year={timeLineEvent.year}
       headLine={timeLineEvent.headLine}
       companyName={timeLineEvent.companyName}
