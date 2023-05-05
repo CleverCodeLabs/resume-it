@@ -20,7 +20,7 @@ const Dashboard: NextPageWithLayout = () => {
   ];
 
   const handleClick = () => {
-    router.push("/resume/contact");
+    router.push("/resume/editing");
   };
   const listItems = resumes.map((resume: any) => (
     <ItemResume
