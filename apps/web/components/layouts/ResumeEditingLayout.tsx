@@ -1,6 +1,8 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import React, { FC, PropsWithChildren } from "react";
 import CoverPage from "../../templates/basic/CoverPage";
+import Navbar from "../nav/nav";
+import Preview from "../preview/Preview";
 import axios from "axios";
 import useSWR from "swr";
 import { useRouter } from "next/router";
