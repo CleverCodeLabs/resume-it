@@ -1,15 +1,15 @@
 import { Box, Heading, Image, Stack, StackDivider } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import Page from "../../components/page/Page";
-import Identity from "./components/Identity";
-import RadarChart from "./components/RadarChart";
 import { ResumeContext } from "../../context/ResumeContext";
-import SkillsList from "./components/SkillsList";
-import LanguagesList from "./components/LanguagesList";
-import HobbiesList from "./components/HobbiesList";
 import AboutMe from "./components/AboutMe";
-import TimelineList from "./components/TimelineList";
 import EducationsList from "./components/EducationsList";
+import HobbiesList from "./components/HobbiesList";
+import Identity from "./components/Identity";
+import LanguagesList from "./components/LanguagesList";
+import RadarChart from "./components/RadarChart";
+import SkillsList from "./components/SkillsList";
+import TimelineList from "./components/TimelineList";
 
 export default function CoverPage() {
   const {
@@ -25,19 +25,7 @@ export default function CoverPage() {
     softSkills,
     workExperiences,
   } = useContext(ResumeContext);
-  // const {
-  //   name,
-  //   headline,
-  //   yearsOfExperience,
-  //   skills,
-  //   languages,
-  //   hobbies,
-  //   aboutMe,
-  //   timeline,
-  //   educations,
-  //   softSkills,
-  //   workExperiences,
-  // } = resumeJson;
+
   return (
     <Page>
       <Stack
