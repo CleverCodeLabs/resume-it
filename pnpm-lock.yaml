@@ -132,6 +132,7 @@ importers:
       react-dom: 18.2.0
       react-hook-form: ^7.43.8
       react-icons: ^4.8.0
+      react-zoom-pan-pinch: ^3.0.7
       swr: ^2.1.5
       tsconfig: workspace:*
       typescript: ^4.5.3
@@ -149,6 +150,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       react-hook-form: 7.43.8_react@18.2.0
       react-icons: 4.8.0_react@18.2.0
+      react-zoom-pan-pinch: 3.0.7_biqbaboplfbrettd7655fr4n2y
       swr: 2.1.5_react@18.2.0
       ui: link:../../packages/ui
     devDependencies:
@@ -6870,6 +6872,17 @@ packages:
       invariant: 2.2.4
       react: 18.2.0
       tslib: 2.5.0
+    dev: false
+
+  /react-zoom-pan-pinch/3.0.7_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-UJkk1Z7BMPIgfY+Qu4jGTlj+UyZQhrpJeCuK1gg31x57i3p8h4ZXfYWu3dFIiR+uRgfoe/koziwgCjA//T1rKA==}
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:

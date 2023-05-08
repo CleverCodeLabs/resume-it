@@ -44,7 +44,7 @@ const ResumeEditingLayout: FC<BaseLayoutProps> = ({ children }) => {
       >
         {children}
       </GridItem>
-      <GridItem area={"preview"}>
+      <GridItem area={"preview"} h="calc(100vh - 60px)">
         <Preview>
           <CoverPage />
         </Preview>
