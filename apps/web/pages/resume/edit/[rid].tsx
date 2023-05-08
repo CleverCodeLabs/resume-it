@@ -1,4 +1,4 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
@@ -40,21 +40,23 @@ const Editing: NextPageWithLayout = () => {
         <GridItem area={"nav"}>
           <Navbar />
         </GridItem>
-        <GridItem
-          pl="2"
-          px="4"
-          bg="gray.50"
-          area={"form"}
-          overflowY="scroll"
-          h="calc(100vh - 60px)"
-        >
-          <ContactForm />
-          <ProfileForm />
-          <LocationForm />
-          <Languages />
-          <Hobbies />
-          <Skills />
-          <Networks />
+        <GridItem area={"form"}>
+          <Box
+            pl="2"
+            px="4"
+            bg="gray.50"
+            overflowY="scroll"
+            h="calc(100vh - 60px)"
+            scrollBehavior="smooth"
+          >
+            <ContactForm />
+            <ProfileForm />
+            <LocationForm />
+            <Languages />
+            <Hobbies />
+            <Skills />
+            <Networks />
+          </Box>
         </GridItem>
         <GridItem area={"preview"} h="calc(100vh - 60px)">
           <Preview>
