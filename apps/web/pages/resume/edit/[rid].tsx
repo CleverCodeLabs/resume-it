@@ -34,7 +34,7 @@ const Editing: NextPageWithLayout = () => {
   return (
     <ResumeProvider value={data}>
       <Grid
-        templateAreas={`"nav main preview"`}
+        templateAreas={`"nav form preview"`}
         gridTemplateColumns={"60px 1fr 2fr"}
       >
         <GridItem area={"nav"}>
@@ -44,7 +44,7 @@ const Editing: NextPageWithLayout = () => {
           pl="2"
           px="4"
           bg="gray.50"
-          area={"main"}
+          area={"form"}
           overflowY="scroll"
           h="calc(100vh - 60px)"
         >
