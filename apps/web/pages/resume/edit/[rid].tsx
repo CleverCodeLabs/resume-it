@@ -1,36 +1,73 @@
+import { Grid, GridItem } from "@chakra-ui/react";
+import axios from "axios";
+import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
-import Layout from "../../../components/layouts/Layout";
-import ResumeEditingLayout from "../../../components/layouts/ResumeEditingLayout";
-import { NextPageWithLayout } from "../../_app";
-import { Box } from "@chakra-ui/react";
+import useSWR from "swr";
 import ContactForm from "../../../components/contact/ContactForm";
-import ProfileForm from "../../../components/profile/ProfileForm";
-import LocationForm from "../../../components/location/LocationForm";
-import Languages from "../../../components/languages/Languages";
 import Hobbies from "../../../components/hobbies/Hobbies";
-import Skills from "../../../components/skills/Skills";
+import Languages from "../../../components/languages/Languages";
+import Layout from "../../../components/layouts/Layout";
+import LocationForm from "../../../components/location/LocationForm";
+import Navbar from "../../../components/nav/nav";
 import Networks from "../../../components/networks/Networks";
+import Preview from "../../../components/preview/Preview";
+import ProfileForm from "../../../components/profile/ProfileForm";
+import Skills from "../../../components/skills/Skills";
+import { ResumeProvider } from "../../../context/ResumeContext";
+import { Resume } from "../../../templates/basic/components/resume";
+import CoverPage from "../../../templates/basic/CoverPage";
+import { NextPageWithLayout } from "../../_app";
 
 const Editing: NextPageWithLayout = () => {
+  const router = useRouter();
+  const { rid } = router.query;
+  const fetcher = (url: any) => axios.get(url).then((res) => res.data);
+
+  const { data, error } = useSWR<Resume>(
+    `http://localhost:3333/resumes/${rid}`,
+    fetcher
+  );
+
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
+
   return (
-    <Box>
-      <ContactForm />
-      <ProfileForm />
-      <LocationForm />
-      <Languages />
-      <Hobbies />
-      <Skills />
-      <Networks />
-    </Box>
+    <ResumeProvider value={data}>
+      <Grid
+        templateAreas={`"nav main preview"`}
+        gridTemplateColumns={"60px 1fr 2fr"}
+      >
+        <GridItem area={"nav"}>
+          <Navbar />
+        </GridItem>
+        <GridItem
+          pl="2"
+          px="4"
+          bg="gray.50"
+          area={"main"}
+          overflowY="scroll"
+          h="calc(100vh - 60px)"
+        >
+          <ContactForm />
+          <ProfileForm />
+          <LocationForm />
+          <Languages />
+          <Hobbies />
+          <Skills />
+          <Networks />
+        </GridItem>
+        <GridItem area={"preview"} h="calc(100vh - 60px)">
+          <Preview>
+            <CoverPage />
+          </Preview>
+        </GridItem>
+      </Grid>
+    </ResumeProvider>
   );
 };
 
 Editing.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <Layout>
-      <ResumeEditingLayout>{page}</ResumeEditingLayout>
-    </Layout>
-  );
+  return <Layout>{page}</Layout>;
 };
 
 export default Editing;
