@@ -58,10 +58,9 @@ const Editing: NextPageWithLayout = () => {
             overflowY="scroll"
             h="calc(100vh - 60px)"
             scrollBehavior="smooth"
-          scrollBehavior="smooth"
-            >
+          >
             <ProfileForm
-            {...{
+              {...{
                 picture,
                 fullName,
                 phoneNumber,
@@ -71,7 +70,8 @@ const Editing: NextPageWithLayout = () => {
                 yearsOfExperience,
                 aboutMe,
               }}
-            /><LocationForm />
+            />
+            <LocationForm />
             <Languages />
             <Hobbies />
             <Skills />
