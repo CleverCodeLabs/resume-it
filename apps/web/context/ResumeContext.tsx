@@ -1,4 +1,5 @@
 import { createContext, FC, PropsWithChildren } from "react";
+import { ProfileProvider } from "../components/profile/ProfileContext";
 import { Resume } from "../templates/basic/components/resume";
 
 export const ResumeContext = createContext<Resume>({});
@@ -9,4 +10,7 @@ type ResumeProviderProps = PropsWithChildren & {
 export const ResumeProvider: FC<ResumeProviderProps> = ({
   children,
   value,
-}) => <ResumeContext.Provider value={value}>{children}</ResumeContext.Provider>;
+}) => {
+  const { profile } = value;
+  return <ProfileProvider value={profile || {}}>{children}</ProfileProvider>;
+};

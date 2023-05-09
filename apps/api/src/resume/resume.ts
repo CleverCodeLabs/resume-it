@@ -1,6 +1,32 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
+export class ProfileInput {
+  @ApiProperty()
+  picture: string;
+
+  @ApiProperty()
+  fullName: string;
+
+  @ApiProperty()
+  phoneNumber: string;
+
+  @ApiProperty()
+  emailAddress: string;
+
+  @ApiProperty()
+  dateOfBirth: Date;
+
+  @ApiProperty()
+  headline: string;
+
+  @ApiProperty()
+  yearsOfExperience: number;
+
+  @ApiProperty()
+  aboutMe: string;
+}
+
 export class SkillInput {
   @ApiProperty()
   name: string;
@@ -68,17 +94,8 @@ export class TechnicalEnvironmentInput {
 }
 
 export class CreateResumeRequest {
-  @ApiProperty()
-  @IsNotEmpty()
-  fullName: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  headline: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  yearsOfExperience: number;
+  @ApiProperty({ type: [ProfileInput] })
+  profile: ProfileInput;
 
   @ApiProperty({ type: [SkillInput] })
   @IsNotEmpty()
@@ -91,10 +108,6 @@ export class CreateResumeRequest {
   @ApiProperty()
   @IsNotEmpty()
   hobbies: string[];
-
-  @ApiProperty()
-  @IsNotEmpty()
-  aboutMe: string;
 
   @ApiProperty({ type: [EducationInput] })
   @IsNotEmpty()

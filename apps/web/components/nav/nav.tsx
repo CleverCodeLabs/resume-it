@@ -1,10 +1,3 @@
-import { FC } from "react";
-import { RiContactsLine, RiProfileLine } from "react-icons/ri";
-import { GrMapLocation } from "react-icons/gr";
-import { MdOutlineLanguage } from "react-icons/md";
-import { RxHobbyKnife } from "react-icons/rx";
-import { GiSkills } from "react-icons/gi";
-import { IoShareSocialOutline } from "react-icons/io5";
 import {
   Box,
   IconButton,
@@ -13,6 +6,13 @@ import {
   ListItem,
   Tooltip,
 } from "@chakra-ui/react";
+import { FC } from "react";
+import { GiSkills } from "react-icons/gi";
+import { GrMapLocation } from "react-icons/gr";
+import { IoShareSocialOutline } from "react-icons/io5";
+import { MdOutlineLanguage } from "react-icons/md";
+import { RiProfileLine } from "react-icons/ri";
+import { RxHobbyKnife } from "react-icons/rx";
 
 const Navbar: FC = () => {
   return (
@@ -26,18 +26,6 @@ const Navbar: FC = () => {
         spacing={3}
         bg="gray.200"
       >
-        <ListItem>
-          <Tooltip label="Contact">
-            <IconButton
-              as={Link}
-              aria-label="Contact"
-              href="#contact"
-              borderRadius="full"
-            >
-              <RiContactsLine />
-            </IconButton>
-          </Tooltip>
-        </ListItem>
         <ListItem>
           <Tooltip label="Profil">
             <IconButton

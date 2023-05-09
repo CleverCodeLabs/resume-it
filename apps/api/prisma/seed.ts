@@ -5,12 +5,18 @@ const prisma = new PrismaClient();
 async function main() {
   const resume = await prisma.resume.create({
     data: {
-      fullName: 'Philippe Wronski',
-      headline: 'Tech Lead / Lead Dev',
-      yearsOfExperience: 12,
-      aboutMe: `Lead Technique, j\'ai travaillé sur des sujets à fort challenge autour des technologies Java/JEE (Web/mobile) et Front dans divers domaines : Industrie automobile / Bâtiment / Transport ferroviaire, Assurance et Energie.\n
+      profile: {
+        picture: '',
+        fullName: 'Philippe Wronski',
+        phoneNumber: '0123456789',
+        emailAddress: 'philippe.wronski@gmail.com',
+        dateOfBirth: new Date(Date.now()),
+        headline: 'Tech Lead / Lead Dev',
+        yearsOfExperience: 12,
+        aboutMe: `Lead Technique, j\'ai travaillé sur des sujets à fort challenge autour des technologies Java/JEE (Web/mobile) et Front dans divers domaines : Industrie automobile / Bâtiment / Transport ferroviaire, Assurance et Energie.\n
         Fort de 12 ans d\'expérience, mon parcours dans le domaine de l\'Informatique applicative, m\'a permis d\'acquérir une forte compétence dans la conception, le développement, l’innovation et l’écoute du client.\n
         Depuis 4 ans, j’occupe le rôle de lead technique dans lequel j’ai pu développer mon appétence pour l’agilité, l’automatisation (DevOps) et le webdesign.`,
+      },
       skills: [
         {
           name: 'React',

@@ -18,9 +18,11 @@ export default class Identity extends Component<IdentityProps> {
         <Text color="black" fontWeight="extrabold" fontSize="xl">
           {headline}
         </Text>
-        <Text color="black" fontWeight="extrabold" fontSize="xl">
-          {yearsOfExperience} ans d'expérience
-        </Text>
+        {!!yearsOfExperience && (
+          <Text color="black" fontWeight="extrabold" fontSize="xl">
+            {yearsOfExperience} ans d'expérience
+          </Text>
+        )}
       </Box>
     );
   }
