@@ -3,7 +3,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
 import useSWR from "swr";
-import ContactForm from "../../../components/contact/ContactForm";
 import Hobbies from "../../../components/hobbies/Hobbies";
 import Languages from "../../../components/languages/Languages";
 import Layout from "../../../components/layouts/Layout";
@@ -24,12 +23,23 @@ const Editing: NextPageWithLayout = () => {
   const fetcher = (url: any) => axios.get(url).then((res) => res.data);
 
   const { data, error } = useSWR<Resume>(
-    `http://localhost:3333/resumes/${rid}`,
+    rid ? `http://localhost:3333/resumes/${rid}` : null,
     fetcher
   );
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
+
+  const {
+    picture,
+    fullName,
+    phoneNumber,
+    emailAddress,
+    dateOfBirth,
+    headline,
+    yearsOfExperience,
+    aboutMe,
+  } = data.profile || {};
 
   return (
     <ResumeProvider value={data}>
@@ -49,8 +59,18 @@ const Editing: NextPageWithLayout = () => {
             h="calc(100vh - 60px)"
             scrollBehavior="smooth"
           >
-            <ContactForm />
-            <ProfileForm />
+            <ProfileForm
+              {...{
+                picture,
+                fullName,
+                phoneNumber,
+                emailAddress,
+                dateOfBirth,
+                headline,
+                yearsOfExperience,
+                aboutMe,
+              }}
+            />
             <LocationForm />
             <Languages />
             <Hobbies />

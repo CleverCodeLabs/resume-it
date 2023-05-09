@@ -1,7 +1,7 @@
 import { Resume } from "../templates/basic/components/resume";
 
 export const resumeJson: Resume = {
-  name: "Philippe Wronski",
+  fullName: "Philippe Wronski",
   headline: "Tech Lead / Lead Dev",
   yearsOfExperience: 12,
   skills: [

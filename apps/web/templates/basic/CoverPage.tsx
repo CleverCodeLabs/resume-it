@@ -1,6 +1,7 @@
 import { Box, Heading, Image, Stack, StackDivider } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import Page from "../../components/page/Page";
+import { useProfile } from "../../components/profile/ProfileContext";
 import { ResumeContext } from "../../context/ResumeContext";
 import AboutMe from "./components/AboutMe";
 import EducationsList from "./components/EducationsList";
@@ -12,19 +13,18 @@ import SkillsList from "./components/SkillsList";
 import TimelineList from "./components/TimelineList";
 
 export default function CoverPage() {
+  //FIXME ne plus utiliser ce context. Faire la même chose que pour profile.
   const {
-    name,
-    headline,
-    yearsOfExperience,
     skills,
     languages,
     hobbies,
-    aboutMe,
     timeline,
     educations,
     softSkills,
     workExperiences,
   } = useContext(ResumeContext);
+
+  const profile = useProfile();
 
   return (
     <Page>
@@ -49,9 +49,9 @@ export default function CoverPage() {
             />
           </Box>
           <Identity
-            name={name}
-            headline={headline}
-            yearsOfExperience={yearsOfExperience}
+            name={profile?.fullName}
+            headline={profile?.headline}
+            yearsOfExperience={profile?.yearsOfExperience}
           />
 
           <Box>
@@ -94,7 +94,7 @@ export default function CoverPage() {
               width="14"
               borderRadius="2"
             ></Box>
-            <AboutMe aboutMe={aboutMe} />
+            <AboutMe aboutMe={profile?.aboutMe} />
           </Box>
 
           <Box>

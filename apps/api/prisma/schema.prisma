@@ -11,17 +11,25 @@ datasource db {
 }
 
 model Resume {
-  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  profile         Profile
+  skills          Skill[]
+  languages       Language[]
+  hobbies         String[]
+  educations      Education[]
+  softSkills      SoftSkill[]
+  workExperiences WorkExperience[]
+}
+
+type Profile {
+  picture           String?
   fullName          String
+  phoneNumber       String
+  emailAddress      String
+  dateOfBirth       DateTime
   headline          String
   yearsOfExperience Int
-  skills            Skill[]
-  languages         Language[]
-  hobbies           String[]
   aboutMe           String
-  educations        Education[]
-  softSkills        SoftSkill[]
-  workExperiences   WorkExperience[]
 }
 
 type Skill {

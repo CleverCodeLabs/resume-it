@@ -1,15 +1,23 @@
 export interface Resume {
-  name?: string;
-  headline?: string;
-  yearsOfExperience?: number;
+  profile?: Profile;
   skills?: Skill[];
   languages?: Language[];
   hobbies?: string[];
-  aboutMe?: string;
   timeline?: TimeLineEvent[];
   educations?: Education[];
   softSkills?: SoftSkill[];
   workExperiences?: WorkExperience[];
+}
+
+export interface Profile {
+  picture?: string;
+  fullName?: string;
+  phoneNumber?: string;
+  emailAddress?: string;
+  dateOfBirth?: Date;
+  headline?: string;
+  yearsOfExperience?: number;
+  aboutMe?: string;
 }
 
 export interface Skill {
