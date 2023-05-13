@@ -2,15 +2,15 @@ import {
   Box,
   Button,
   Divider,
-  Heading,
   List,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { IoAddOutline, IoShareSocialOutline } from "react-icons/io5";
 import React, { FC, useReducer, useState } from "react";
-import NetworksModal from "./NetworksModal";
+import { IoAddOutline, IoShareSocialOutline } from "react-icons/io5";
+import { SectionHeader } from "ui";
 import NetworkItem from "./NetworkItem";
+import NetworksModal from "./NetworksModal";
 import reducer, { initialNetworksState, Network } from "./reducer";
 
 const Networks: FC = () => {
@@ -35,31 +35,18 @@ const Networks: FC = () => {
 
   return (
     <Box mb="4" pos="relative" id="network">
-      <Heading
-        as="h2"
-        size="lg"
-        top="0"
-        p="4"
-        mx="-4"
-        pos="sticky"
-        bgColor="gray.50"
-        zIndex="sticky"
-        boxShadow="sm"
-        display="flex"
-        alignItems="center"
-      >
+      <SectionHeader>
         <IoShareSocialOutline />
         <Text as="span" ml="3">
           Réseaux Sociaux
         </Text>
-      </Heading>
+      </SectionHeader>
       <List className="network">{networksItem}</List>
       <Button
         onClick={() => {
           onOpen();
         }}
         leftIcon={<IoAddOutline />}
-        colorScheme="teal"
         variant="outline"
         mb="4"
       >

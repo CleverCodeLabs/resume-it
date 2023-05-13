@@ -12,16 +12,16 @@ import {
   ModalHeader,
   ModalOverlay,
   Select,
-  Text
+  Text,
 } from "@chakra-ui/react";
-import { IoShareSocialOutline } from "react-icons/io5";
-import { Controller, useForm } from "react-hook-form";
 import React, { FC } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { IoShareSocialOutline } from "react-icons/io5";
 
 interface LanguagesModalInput {
-  id?: number,
+  id?: number;
   name: string;
-  level: string ;
+  level: string;
 }
 
 type LanguagesModalProps = {
@@ -32,11 +32,11 @@ type LanguagesModalProps = {
 };
 
 const LanguagesModal: FC<LanguagesModalProps> = ({
-                                                 isOpen,
-                                                 onClose,
-                                                 onSave,
-                                                 language,
-                                               }) => {
+  isOpen,
+  onClose,
+  onSave,
+  language,
+}) => {
   const { control, getValues, reset } = useForm<LanguagesModalInput>({
     mode: "onBlur",
     values: {
@@ -76,7 +76,10 @@ const LanguagesModal: FC<LanguagesModalProps> = ({
               required: "This is required",
               minLength: { value: 4, message: "Minimum length should be 4" },
             }}
-            render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
+            render={({
+              field: { onChange, onBlur, value, ref },
+              fieldState,
+            }) => (
               <FormControl isInvalid={fieldState.invalid} mb="4">
                 <FormLabel htmlFor="name" mt="4">
                   Nom de la Langue
@@ -118,7 +121,7 @@ const LanguagesModal: FC<LanguagesModalProps> = ({
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={handleSave}>
+          <Button colorScheme="blackAlpha" mr={3} onClick={handleSave}>
             Enregistrer
           </Button>
         </ModalFooter>

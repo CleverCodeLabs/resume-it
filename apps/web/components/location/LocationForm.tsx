@@ -1,18 +1,17 @@
-import { Controller, useForm } from "react-hook-form";
-
 import {
   Box,
   Divider,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Heading,
   HStack,
   Input,
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { Controller, useForm } from "react-hook-form";
 import { GrMapLocation } from "react-icons/gr";
+import { SectionHeader } from "ui";
 
 interface LocationFormInput {
   address: string;
@@ -49,25 +48,13 @@ export default function LocationForm() {
 
   return (
     <Box mb="4" pos="relative" id="location">
-      <form onSubmit={handleSubmit(onSubmit)} >
-        <Heading
-          as="h2"
-          size="lg"
-          top="0"
-          p="4"
-          mx="-4"
-          pos="sticky"
-          bgColor="gray.50"
-          zIndex="sticky"
-          boxShadow="sm"
-          display="flex"
-          alignItems="center"
-        >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <SectionHeader>
           <GrMapLocation />
           <Text as="span" ml="3">
             Adresse
           </Text>
-        </Heading>
+        </SectionHeader>
 
         <Controller
           name="address"
