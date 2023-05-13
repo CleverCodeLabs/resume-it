@@ -2,6 +2,7 @@ import { Box, Heading, Image, Stack, StackDivider } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import Page from "../../components/page/Page";
 import { useProfile } from "../../components/profile/ProfileContext";
+import { useSkills } from "../../components/skills/SkillsContext";
 import { ResumeContext } from "../../context/ResumeContext";
 import AboutMe from "./components/AboutMe";
 import EducationsList from "./components/EducationsList";
@@ -15,7 +16,6 @@ import TimelineList from "./components/TimelineList";
 export default function CoverPage() {
   //FIXME ne plus utiliser ce context. Faire la même chose que pour profile.
   const {
-    skills,
     languages,
     hobbies,
     timeline,
@@ -25,6 +25,7 @@ export default function CoverPage() {
   } = useContext(ResumeContext);
 
   const profile = useProfile();
+  const skills = useSkills();
 
   return (
     <Page>

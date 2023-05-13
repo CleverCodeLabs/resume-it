@@ -1,5 +1,3 @@
-import { Controller, useForm } from "react-hook-form";
-
 import {
   Box,
   Divider,
@@ -12,66 +10,18 @@ import {
   TagLabel,
   TagLeftIcon,
   Text,
-  Tooltip,
 } from "@chakra-ui/react";
-import React, { useReducer } from "react";
-import { GiSkills } from "react-icons/gi";
+import React from "react";
+import { Controller, useForm } from "react-hook-form";
 import { BsStar, BsStarFill } from "react-icons/bs";
+import { GiSkills } from "react-icons/gi";
+import { useSkills, useSkillsDispatch } from "./SkillsContext";
 
 interface SkillInput {
   name: string;
 }
 
-interface SkillsState {
-  counter: number;
-  skills: {
-    id?: number;
-    name: string;
-    favorites: boolean;
-  }[];
-}
-
-const initialSkillsState: SkillsState = {
-  counter: 0,
-  skills: [],
-};
-const reducer = (state: SkillsState, action: any) => {
-  switch (action.type) {
-    case "add":
-      const newCounter = state.counter + 1;
-      return {
-        counter: newCounter,
-        skills: [
-          ...state.skills,
-          {
-            id: newCounter,
-            name: action.name,
-            favorites: false,
-          },
-        ],
-      };
-    case "remove":
-      return {
-        counter: state.counter,
-        skills: state.skills.filter((s) => s.id !== action.id),
-      };
-    case "favorites":
-      const { id, favorites } = action;
-      const skill = state.skills.find((s) => s.id === id);
-      if (skill) {
-        skill.favorites = favorites;
-      }
-      return {
-        counter: state.counter,
-        skills: state.skills,
-      };
-    default:
-      return state;
-  }
-};
-
 export default function Skills() {
-  const [skillState, dispatch] = useReducer(reducer, initialSkillsState);
   const {
     control,
     handleSubmit,
@@ -85,8 +35,11 @@ export default function Skills() {
     },
   });
 
-  async function onSubmit(skill: any): Promise<void> {
-    dispatch({ type: "add", ...skill });
+  const skills = useSkills();
+  const dispatch = useSkillsDispatch();
+
+  async function onSubmit(skill: SkillInput): Promise<void> {
+    dispatch({ type: "add", data: { ...skill, favorites: false } });
     reset();
   }
 
@@ -119,41 +72,47 @@ export default function Skills() {
           mb="2"
           p={2}
         >
-          {!!skillState.skills.length && (
+          {!!skills.length && (
             <HStack spacing={2} rowGap={2} wrap="wrap" mb={2}>
-              {skillState.skills.map((skill) => (
-                // eslint-disable-next-line react/jsx-key
-                <Tooltip label="Indique que cette compétence est une compétence clé. Permet d'afficher la compétence sur la 1ere page">
-                  <Tag
-                    size="lg"
-                    key={skill.id}
-                    borderRadius="full"
-                    variant="solid"
-                    colorScheme="green"
-                  >
-                    <TagLeftIcon
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        dispatch({
-                          type: "favorites",
+              {skills.map((skill) => (
+                // <Tooltip label="Indique que cette compétence est une compétence clé. Permet d'afficher la compétence sur la 1ere page">
+                <Tag
+                  size="lg"
+                  key={skill.name}
+                  borderRadius="full"
+                  variant="solid"
+                  colorScheme="green"
+                >
+                  <TagLeftIcon
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      dispatch({
+                        type: "favorites",
+                        data: {
                           ...skill,
                           favorites: !skill.favorites,
-                        });
-                      }}
-                      as={skill.favorites ? BsStarFill : BsStar}
-                    />
+                        },
+                      });
+                    }}
+                    as={skill.favorites ? BsStarFill : BsStar}
+                  />
 
-                    <TagLabel>{skill.name}</TagLabel>
-                    <TagCloseButton
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        dispatch({ type: "remove", ...skill });
-                      }}
-                    />
-                  </Tag>
-                </Tooltip>
+                  <TagLabel>{skill.name}</TagLabel>
+                  <TagCloseButton
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      dispatch({
+                        type: "remove",
+                        data: {
+                          ...skill,
+                        },
+                      });
+                    }}
+                  />
+                </Tag>
+                // </Tooltip>
               ))}
             </HStack>
           )}

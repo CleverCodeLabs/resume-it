@@ -22,7 +22,7 @@ export interface Profile {
 
 export interface Skill {
   name: string;
-  level: number;
+  favorites: boolean;
 }
 
 export interface Language {
