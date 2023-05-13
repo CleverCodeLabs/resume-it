@@ -42,10 +42,10 @@ export const ProfileProvider: FC<ProfileProviderProps> = ({
   children,
   value,
 }) => {
-  const [Profile, dispatch] = useReducer(ProfileReducer, value);
+  const [profile, dispatch] = useReducer(ProfileReducer, value);
 
   return (
-    <ProfileContext.Provider value={Profile}>
+    <ProfileContext.Provider value={profile}>
       <ProfileDispatchContext.Provider value={dispatch}>
         {children}
       </ProfileDispatchContext.Provider>
