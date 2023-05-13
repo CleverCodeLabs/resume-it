@@ -2,7 +2,6 @@ import {
   Box,
   Divider,
   FormControl,
-  Heading,
   HStack,
   Input,
   Tag,
@@ -15,6 +14,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { GiSkills } from "react-icons/gi";
+import { SectionHeader } from "ui";
 import { useSkills, useSkillsDispatch } from "./SkillsContext";
 
 interface SkillInput {
@@ -45,24 +45,12 @@ export default function Skills() {
 
   return (
     <Box mb="4" pos="relative" id="skills">
-      <Heading
-        as="h2"
-        size="lg"
-        top="0"
-        p="4"
-        mx="-4"
-        pos="sticky"
-        bgColor="gray.50"
-        zIndex="sticky"
-        boxShadow="sm"
-        display="flex"
-        alignItems="center"
-      >
+      <SectionHeader>
         <GiSkills />
         <Text as="span" ml="3">
           Compétences
         </Text>
-      </Heading>
+      </SectionHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box
           border="1px"
@@ -81,7 +69,7 @@ export default function Skills() {
                   key={skill.name}
                   borderRadius="full"
                   variant="solid"
-                  colorScheme="green"
+                  colorScheme="blackAlpha"
                 >
                   <TagLeftIcon
                     onClick={(e) => {

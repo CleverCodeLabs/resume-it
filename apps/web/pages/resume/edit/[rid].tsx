@@ -54,10 +54,11 @@ const Editing: NextPageWithLayout = () => {
           <Box
             pl="2"
             px="4"
-            bg="gray.50"
             overflowY="scroll"
             h="calc(100vh - 60px)"
             scrollBehavior="smooth"
+            borderRight="1px"
+            borderColor="gray.300"
           >
             <ProfileForm
               {...{

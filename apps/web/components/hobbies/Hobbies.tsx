@@ -1,10 +1,7 @@
-import { Controller, useForm } from "react-hook-form";
-
 import {
   Box,
   Divider,
   FormControl,
-  Heading,
   HStack,
   Input,
   Tag,
@@ -13,7 +10,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useReducer } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { RxHobbyKnife } from "react-icons/rx";
+import { SectionHeader } from "ui";
 
 interface HobbyInput {
   name: string;
@@ -77,24 +76,12 @@ export default function Hobbies() {
 
   return (
     <Box mb="4" pos="relative" id="hobbies">
-      <Heading
-        as="h2"
-        size="lg"
-        top="0"
-        p="4"
-        mx="-4"
-        pos="sticky"
-        bgColor="gray.50"
-        zIndex="sticky"
-        boxShadow="sm"
-        display="flex"
-        alignItems="center"
-      >
+      <SectionHeader>
         <RxHobbyKnife />
         <Text as="span" ml="3">
           Loisir
         </Text>
-      </Heading>
+      </SectionHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box
           border="1px"
@@ -112,7 +99,7 @@ export default function Hobbies() {
                   key={hobby.id}
                   borderRadius="full"
                   variant="solid"
-                  colorScheme="green"
+                  colorScheme="blackAlpha"
                 >
                   <TagLabel>{hobby.name}</TagLabel>
                   <TagCloseButton

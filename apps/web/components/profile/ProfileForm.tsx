@@ -6,7 +6,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Heading,
   HStack,
   Image,
   Input,
@@ -27,6 +26,7 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { RiProfileLine } from "react-icons/ri";
 import { debounce, Subject, timer } from "rxjs";
+import { SectionHeader } from "ui";
 import { Profile } from "../../templates/basic/components/resume";
 import { useProfileDispatch } from "./ProfileContext";
 
@@ -106,24 +106,12 @@ const ProfileForm: FC<ProfileFormProps> = ({
 
   return (
     <Box mb="4" pos="relative" id="profile">
-      <Heading
-        as="h2"
-        size="lg"
-        top="0"
-        p="4"
-        mx="-4"
-        pos="sticky"
-        bgColor="gray.50"
-        zIndex="sticky"
-        boxShadow="sm"
-        display="flex"
-        alignItems="center"
-      >
+      <SectionHeader>
         <RiProfileLine />
         <Text as="span" ml="3">
           Profil
         </Text>
-      </Heading>
+      </SectionHeader>
 
       <Controller
         name="picture"
@@ -159,6 +147,7 @@ const ProfileForm: FC<ProfileFormProps> = ({
               </Container>
             ) : null}
             <Button
+              variant="outline"
               onClick={(event) => {
                 event.preventDefault();
                 if (fileInputRef.current) {
@@ -328,7 +317,7 @@ const ProfileForm: FC<ProfileFormProps> = ({
                 {...field}
               >
                 <SliderTrack>
-                  <SliderFilledTrack />
+                  <SliderFilledTrack bg="blackAlpha.700" />
                 </SliderTrack>
                 <SliderThumb fontSize="sm" boxSize="32px">
                   {field.value}

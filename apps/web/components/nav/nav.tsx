@@ -16,7 +16,7 @@ import { RxHobbyKnife } from "react-icons/rx";
 
 const Navbar: FC = () => {
   return (
-    <Box as="nav" h="100%">
+    <Box as="nav" h="100%" borderRight="1px" borderColor="gray.300">
       <List
         h="100%"
         py={4}
@@ -24,7 +24,7 @@ const Navbar: FC = () => {
         flexDirection="column"
         alignItems="center"
         spacing={3}
-        bg="gray.200"
+        bg="gray.100"
       >
         <ListItem>
           <Tooltip label="Profil">

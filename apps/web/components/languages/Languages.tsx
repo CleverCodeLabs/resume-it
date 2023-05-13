@@ -1,15 +1,26 @@
-import { Box, Button, Divider, Heading, List, Text, useDisclosure } from "@chakra-ui/react";
-import { IoAddOutline } from "react-icons/io5";
+import {
+  Box,
+  Button,
+  Divider,
+  List,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import React, { FC, useReducer, useState } from "react";
-import languagesReducer, { initialLanguagesState } from "./languages.reducer";
-import LanguageItem from "./LanguageItem";
-import LanguagesModal from "./LanguagesModal";
+import { IoAddOutline } from "react-icons/io5";
 import { MdOutlineLanguage } from "react-icons/md";
+import { SectionHeader } from "ui";
+import LanguageItem from "./LanguageItem";
+import languagesReducer, { initialLanguagesState } from "./languages.reducer";
+import LanguagesModal from "./LanguagesModal";
 
 const Languages: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedLanguage, setSelectedLanguage] = useState<any>(null);
-  const [languagesState, dispatch] = useReducer(languagesReducer, initialLanguagesState);
+  const [languagesState, dispatch] = useReducer(
+    languagesReducer,
+    initialLanguagesState
+  );
 
   const languageItem = languagesState.languages.map((language: any) => (
     <LanguageItem
@@ -21,37 +32,24 @@ const Languages: FC = () => {
         setSelectedLanguage(language);
         onOpen();
       }}
-      onDelete={() => dispatch({type: 'remove', id: language.id})}
+      onDelete={() => dispatch({ type: "remove", id: language.id })}
     />
   ));
 
   return (
     <Box mb="4" pos="relative" id="language">
-      <Heading
-        as="h2"
-        size="lg"
-        top="0"
-        p="4"
-        mx="-4"
-        pos="sticky"
-        bgColor="gray.50"
-        zIndex="sticky"
-        boxShadow="sm"
-        display="flex"
-        alignItems="center"
-      >
+      <SectionHeader>
         <MdOutlineLanguage />
         <Text as="span" ml="3">
           Languages
         </Text>
-      </Heading>
+      </SectionHeader>
       <List className="language">{languageItem}</List>
       <Button
         onClick={() => {
           onOpen();
         }}
         leftIcon={<IoAddOutline />}
-        colorScheme="teal"
         variant="outline"
         mb="4"
       >
@@ -68,9 +66,9 @@ const Languages: FC = () => {
         language={selectedLanguage}
         onSave={(language) => {
           if (language.id) {
-            dispatch({type: 'edit', ...language});
+            dispatch({ type: "edit", ...language });
           } else {
-            dispatch({type: 'add', ...language})
+            dispatch({ type: "add", ...language });
           }
           setSelectedLanguage(null);
         }}
