@@ -1,3 +1,5 @@
+"use client";
+
 import { Grid, GridItem } from "@chakra-ui/react";
 import { FC, PropsWithChildren } from "react";
 import Header from "../header/Header";
@@ -15,7 +17,9 @@ const Layout: FC<BaseLayoutProps> = ({ children }) => {
       <GridItem area={"header"} as="header">
         <Header />
       </GridItem>
-      <GridItem area={"main"} as="main">{children}</GridItem>
+      <GridItem area={"main"} as="main">
+        {children}
+      </GridItem>
     </Grid>
   );
 };

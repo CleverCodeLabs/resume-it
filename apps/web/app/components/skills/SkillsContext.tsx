@@ -15,7 +15,7 @@ export type SkillAction = {
 
 export const SkillsContext = createContext<Skill[]>([]);
 export const SkillsDispatchContext = createContext<Dispatch<SkillAction>>(
-  () => {}
+  () => {},
 );
 
 export const useSkills = () => useContext(SkillsContext);

@@ -1,14 +1,14 @@
-import React, { ReactElement } from "react";
+"use client";
+
 import { Card, CardBody, SimpleGrid, Text, VStack } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import Layout from "../../components/layouts/Layout";
-import { NextPageWithLayout } from "../_app";
-import ItemResume from "../../components/dashboard/ItemResume";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import React, { FC } from "react";
 import { IoAddOutline } from "react-icons/io5";
 import useSWR from "swr";
-import axios from "axios";
+import ItemResume from "../../components/dashboard/ItemResume";
 
-const Dashboard: NextPageWithLayout = () => {
+const Dashboard: FC = () => {
   const router = useRouter();
   const fetcher = (url: any) => axios.get(url).then((res) => res.data);
 
@@ -22,7 +22,7 @@ const Dashboard: NextPageWithLayout = () => {
   };
   const listItems = data.map((resume: any) => (
     <ItemResume
-      key={resume.headline}
+      key={resume.id}
       headline={resume.headline}
       yearsOfExperience={resume.yearsOfExperience}
     />
@@ -45,10 +45,6 @@ const Dashboard: NextPageWithLayout = () => {
       </Card>
     </SimpleGrid>
   );
-};
-
-Dashboard.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
 };
 
 export default Dashboard;

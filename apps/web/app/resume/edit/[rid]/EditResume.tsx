@@ -1,11 +1,11 @@
+"use client";
+
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import axios from "axios";
-import { useRouter } from "next/router";
-import React, { ReactElement } from "react";
+import React, { FC } from "react";
 import useSWR from "swr";
 import Hobbies from "../../../components/hobbies/Hobbies";
 import Languages from "../../../components/languages/Languages";
-import Layout from "../../../components/layouts/Layout";
 import LocationForm from "../../../components/location/LocationForm";
 import Navbar from "../../../components/nav/nav";
 import Networks from "../../../components/networks/Networks";
@@ -15,16 +15,16 @@ import Skills from "../../../components/skills/Skills";
 import { ResumeProvider } from "../../../context/ResumeContext";
 import { Resume } from "../../../templates/basic/components/resume";
 import CoverPage from "../../../templates/basic/CoverPage";
-import { NextPageWithLayout } from "../../_app";
 
-const Editing: NextPageWithLayout = () => {
-  const router = useRouter();
-  const { rid } = router.query;
+type EditResumeProps = {
+  rid: string;
+};
+const EditResume: FC<EditResumeProps> = ({ rid }) => {
   const fetcher = (url: any) => axios.get(url).then((res) => res.data);
 
   const { data, error } = useSWR<Resume>(
     rid ? `http://localhost:3333/resumes/${rid}` : null,
-    fetcher
+    fetcher,
   );
 
   if (error) return <div>Failed to load</div>;
@@ -89,8 +89,4 @@ const Editing: NextPageWithLayout = () => {
   );
 };
 
-Editing.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
-
-export default Editing;
+export default EditResume;
