@@ -15,7 +15,7 @@ export type ProfileAction = {
 
 export const ProfileContext = createContext<Profile>({});
 export const ProfileDispatchContext = createContext<Dispatch<ProfileAction>>(
-  () => {}
+  () => {},
 );
 
 export const useProfile = () => useContext(ProfileContext);

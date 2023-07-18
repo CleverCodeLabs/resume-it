@@ -1,11 +1,13 @@
+"use client";
+
 import { Box } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import { FC } from "react";
 import CoverPage from "../../../templates/basic/CoverPage";
 
-const PrintResume: FC = () => {
-  const router = useRouter();
-  const { rid } = router.query;
+type PrintResumeProps = {
+  rid: string;
+};
+const PrintResume: FC<PrintResumeProps> = ({ rid }) => {
   return (
     <Box
       sx={{

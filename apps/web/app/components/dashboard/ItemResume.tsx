@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardBody, Heading, Stack, Text } from "@chakra-ui/react";
 import React, { Component } from "react";
 

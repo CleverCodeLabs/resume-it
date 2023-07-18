@@ -1,4 +1,4 @@
-import { Resume } from "../templates/basic/components/resume";
+import { Resume } from "../app/templates/basic/components/resume";
 
 export const resumeJson: Resume = {
   fullName: "Philippe Wronski",
