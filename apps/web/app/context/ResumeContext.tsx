@@ -1,4 +1,5 @@
 import { createContext, FC, PropsWithChildren } from "react";
+import { LanguagesProvider } from "../components/languages/LanguagesContext";
 import { ProfileProvider } from "../components/profile/ProfileContext";
 import { SkillsProvider } from "../components/skills/SkillsContext";
 import { Resume } from "../templates/basic/components/resume";
@@ -12,10 +13,12 @@ export const ResumeProvider: FC<ResumeProviderProps> = ({
   children,
   value,
 }) => {
-  const { profile, skills } = value;
+  const {profile, languages, skills} = value;
   return (
     <ProfileProvider value={profile || {}}>
-      <SkillsProvider value={skills || []}>{children}</SkillsProvider>
+      <LanguagesProvider value={languages || []}>
+        <SkillsProvider value={skills || []}>{children}</SkillsProvider>
+      </LanguagesProvider>
     </ProfileProvider>
   );
 };

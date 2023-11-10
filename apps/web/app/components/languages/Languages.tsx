@@ -6,45 +6,46 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { FC, useReducer, useState } from "react";
+import React, { FC, useState } from "react";
 import { IoAddOutline } from "react-icons/io5";
 import { MdOutlineLanguage } from "react-icons/md";
 import { SectionHeader } from "ui";
 import LanguageItem from "./LanguageItem";
-import languagesReducer, { initialLanguagesState } from "./languages.reducer";
+import { useLanguages, useLanguagesDispatch } from "./LanguagesContext";
 import LanguagesModal from "./LanguagesModal";
 
 const Languages: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedLanguage, setSelectedLanguage] = useState<any>(null);
-  const [languagesState, dispatch] = useReducer(
-    languagesReducer,
-    initialLanguagesState
-  );
+  const [selectedLanguage, setSelectedLanguage] = useState<{
+    index?: number;
+    name: string;
+    level: string;
+  } | null>(null);
+  const languages = useLanguages();
+  const dispatch = useLanguagesDispatch();
 
-  const languageItem = languagesState.languages.map((language: any) => (
+  const languagesItems = languages.map((language, index) => (
     <LanguageItem
-      key={language.id}
-      id={language.id}
+      key={index}
       name={language.name}
       level={language.level}
       onEdit={() => {
-        setSelectedLanguage(language);
+        setSelectedLanguage({ index, ...language });
         onOpen();
       }}
-      onDelete={() => dispatch({ type: "remove", id: language.id })}
+      onDelete={() => dispatch({ type: "remove", index })}
     />
   ));
 
   return (
-    <Box mb="4" pos="relative" id="language">
+    <Box mb="4" pos="relative">
       <SectionHeader>
         <MdOutlineLanguage />
         <Text as="span" ml="3">
           Languages
         </Text>
       </SectionHeader>
-      <List className="language">{languageItem}</List>
+      <List>{languagesItems}</List>
       <Button
         onClick={() => {
           onOpen();
@@ -65,14 +66,20 @@ const Languages: FC = () => {
         }}
         language={selectedLanguage}
         onSave={(language) => {
-          if (language.id) {
-            dispatch({ type: "edit", ...language });
+          console.log(language);
+          const { index, name, level } = language;
+          if (index !== undefined) {
+            dispatch({
+              type: "edit",
+              data: { name, level },
+              index,
+            });
           } else {
-            dispatch({ type: "add", ...language });
+            dispatch({ type: "add", data: language });
           }
-          setSelectedLanguage(null);
         }}
       />
+
       <Divider orientation="horizontal" borderColor="gray.400" />
     </Box>
   );

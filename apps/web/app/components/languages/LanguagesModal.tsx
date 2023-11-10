@@ -19,7 +19,7 @@ import { Controller, useForm } from "react-hook-form";
 import { IoShareSocialOutline } from "react-icons/io5";
 
 interface LanguagesModalInput {
-  id?: number;
+  index?: number;
   name: string;
   level: string;
 }
@@ -27,8 +27,8 @@ interface LanguagesModalInput {
 type LanguagesModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (language: any) => void;
-  language?: any;
+  onSave: (language: LanguagesModalInput) => void;
+  language: LanguagesModalInput | null;
 };
 
 const LanguagesModal: FC<LanguagesModalProps> = ({
@@ -40,7 +40,7 @@ const LanguagesModal: FC<LanguagesModalProps> = ({
   const { control, getValues, reset } = useForm<LanguagesModalInput>({
     mode: "onBlur",
     values: {
-      id: language?.id,
+      index: language?.index,
       name: language?.name || "",
       level: language?.level || "",
     },
@@ -106,11 +106,11 @@ const LanguagesModal: FC<LanguagesModalProps> = ({
               <FormControl isInvalid={fieldState.invalid} mb="4">
                 <FormLabel htmlFor="level">Niveau de la Langue</FormLabel>
                 <Select placeholder="Sélectionner votre niveau" {...field}>
-                  <option value="debutant">Débutant</option>
-                  <option value="intermediaire">Intermédiaire</option>
-                  <option value="courant">Courant</option>
-                  <option value="bilingue">Bilingue</option>
-                  <option value="maternelle">Maternelle</option>
+                  <option value="Debutant">Débutant</option>
+                  <option value="Intermediaire">Intermédiaire</option>
+                  <option value="Courant">Courant</option>
+                  <option value="Bilingue">Bilingue</option>
+                  <option value="Maternelle">Maternelle</option>
                 </Select>
                 <FormErrorMessage>
                   {fieldState.error && fieldState.error.message}
